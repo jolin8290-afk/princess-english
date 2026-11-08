@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>英文公主王國</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--pk:#ff5fa8;--pk2:#ff9fd0;--pu:#9b5de5;--pu2:#c9a7ff;--gd:#ffc93c;--ink:#5a2a6e;--glass:rgba(255,255,255,.74)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%}
+body{font-family:'Fredoka','Noto Sans TC','Microsoft JhengHei',sans-serif;color:var(--ink);background:#ffe3f3;
+background-image:radial-gradient(circle at 12% 8%,rgba(255,255,255,.9) 0,transparent 22%),radial-gradient(circle at 88% 18%,rgba(255,233,168,.9) 0,transparent 24%),radial-gradient(circle at 50% 105%,#c9b6ff 0,transparent 55%),linear-gradient(160deg,#ffcfe9 0%,#ead6ff 48%,#cbe7ff 100%);
+background-attachment:fixed;overflow-x:hidden;user-select:none;-webkit-user-select:none}
+button{font-family:inherit}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.tw{position:absolute;color:#fff;animation:tw 3s ease-in-out infinite;text-shadow:0 0 8px #fff,0 0 16px #ffc6ee}
+@keyframes tw{0%,100%{opacity:.15;transform:scale(.5) rotate(0)}50%{opacity:1;transform:scale(1.15) rotate(35deg)}}
+.bub{position:absolute;bottom:-60px;animation:up linear infinite;opacity:.5}
+@keyframes up{to{transform:translateY(-120vh) translateX(40px) rotate(25deg)}}
+#app{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:12px 16px 104px}
+.title{font-size:clamp(28px,6.5vw,48px);font-weight:900;text-align:center;margin:6px 0 4px;line-height:1.15;
+background:linear-gradient(90deg,#ff3f9a,#ffae00,#b06bff,#36b9ff,#ff3f9a);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shim 5s linear infinite;
+filter:drop-shadow(0 3px 0 #fff) drop-shadow(0 8px 12px rgba(176,107,255,.35))}
+.sub{text-align:center;font-weight:700;color:#8a4fb0;margin:0 0 12px}
+@keyframes shim{to{background-position:300% 0}}
+.glass{background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:28px;border:3px solid #fff;
+box-shadow:0 12px 34px rgba(155,93,229,.22),inset 0 0 0 2px rgba(255,201,60,.55);padding:16px;margin:12px 0}
+.btn{position:relative;overflow:hidden;border:3px solid #fff;border-radius:999px;padding:12px 26px;font-size:20px;font-weight:700;color:#fff;cursor:pointer;
+background:linear-gradient(135deg,#ff6fb5,#b06bff);box-shadow:0 6px 0 #a54bc9,0 10px 22px rgba(176,107,255,.4);text-shadow:0 2px 0 rgba(0,0,0,.15);transition:transform .1s}
+.btn:active{transform:translateY(4px);box-shadow:0 2px 0 #a54bc9}
+.btn::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-20deg);animation:shine 3.2s infinite}
+@keyframes shine{0%,60%{left:-60%}100%{left:130%}}
+.btn.gold{background:linear-gradient(135deg,#ffd75e,#ff9f1c);box-shadow:0 6px 0 #d07a00,0 10px 22px rgba(255,159,28,.4)}
+.btn.mint{background:linear-gradient(135deg,#5fe0b8,#36b9ff);box-shadow:0 6px 0 #1f8fb8,0 10px 22px rgba(54,185,255,.35)}
+.btn.ghost{background:rgba(255,255,255,.85);color:var(--ink);box-shadow:0 5px 0 #e3b8e8;text-shadow:none}
+.btn.sm{font-size:16px;padding:8px 16px}
+.btn.big{font-size:24px;padding:16px 34px}
+.btn:disabled{filter:grayscale(.7);opacity:.6}
+.center{text-align:center}
+.row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center}
+
+/* top bar */
+.top{display:flex;align-items:center;gap:10px;background:var(--glass);backdrop-filter:blur(10px);border:3px solid #fff;border-radius:24px;padding:6px 12px;box-shadow:0 8px 24px rgba(155,93,229,.2)}
+.top .av{width:46px;height:54px;flex:none;display:flex;align-items:flex-end;justify-content:center;background:radial-gradient(circle,#fff 30%,#ffd6f0);border-radius:50%;overflow:hidden;border:2px solid #ffd27a}
+.top .who{flex:1;min-width:0}
+.top .nm{font-weight:900;font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top .rk{font-size:13px;color:#b0479a;font-weight:700}
+.xpbar{height:10px;border-radius:9px;background:#fff;box-shadow:inset 0 0 0 2px #ffc2e2;overflow:hidden;margin-top:3px}
+.xpbar i{display:block;height:100%;background:linear-gradient(90deg,#ff7ec4,#ffd166,#b78cff);transition:width .5s}
+.chip{background:#fff;border-radius:999px;padding:4px 10px;font-weight:700;font-size:16px;box-shadow:0 3px 0 #f0c1e4;white-space:nowrap}
+
+/* nav */
+.nav{position:fixed;left:50%;transform:translateX(-50%);bottom:10px;z-index:20;display:flex;gap:4px;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);border:3px solid #fff;border-radius:26px;padding:6px;box-shadow:0 10px 30px rgba(155,93,229,.3);width:min(560px,calc(100% - 20px))}
+.nav button{flex:1;border:0;background:transparent;border-radius:18px;padding:6px 2px;font-size:12px;font-weight:700;color:var(--ink);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:1px}
+.nav button b{font-size:24px;line-height:1.1}
+.nav button.on{background:linear-gradient(135deg,#ffe0f2,#eadcff);box-shadow:inset 0 0 0 2px #ffb6dd}
+
+/* hero banner */
+.banner{display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap}
+.bubble{position:relative;background:#fff;border-radius:22px;padding:10px 14px;font-weight:700;max-width:300px;box-shadow:0 6px 18px rgba(155,93,229,.2);border:3px solid #ffd6f0}
+.bubble::before{content:'';position:absolute;left:-14px;top:24px;border:8px solid transparent;border-right:10px solid #fff}
+.pwrap{position:relative;display:inline-block;animation:float 3s ease-in-out infinite}
+.pwrap .pet{position:absolute;right:-18px;bottom:6px;font-size:34px;animation:float 2.2s ease-in-out infinite reverse;filter:drop-shadow(0 4px 4px rgba(0,0,0,.15))}
+.pwrap .acc{position:absolute;left:-12px;top:30%;display:flex;flex-direction:column;gap:2px;font-size:20px}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.princess{overflow:visible;filter:drop-shadow(0 8px 10px rgba(155,93,229,.3))}
+
+/* map */
+.map{position:relative;padding:6px 0}
+.isle-row{display:flex;margin:-6px 0}
+.isle-row.l{justify-content:flex-start;padding-left:4%}
+.isle-row.r{justify-content:flex-end;padding-right:4%}
+.isle-row.c{justify-content:center}
+.isle{border:0;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;width:170px;color:var(--ink);padding:0}
+.orb{position:relative;width:128px;height:128px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:5px solid #fff;
+box-shadow:0 0 0 4px rgba(255,201,60,.7),0 14px 30px rgba(155,93,229,.35),inset 0 -12px 24px rgba(255,255,255,.6)}
+.orb::before{content:'';position:absolute;inset:-14px;border-radius:50%;border:3px dashed rgba(255,255,255,.95);animation:spin 14s linear infinite}
+.orb::after{content:'';position:absolute;top:12px;left:24px;width:36px;height:20px;border-radius:50%;background:rgba(255,255,255,.75);transform:rotate(-25deg)}
+.orb span{font-size:62px;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 6px 4px rgba(0,0,0,.18))}
+@keyframes spin{to{transform:rotate(360deg)}}
+.isle .nm{margin-top:10px;background:#fff;border-radius:999px;padding:4px 14px;font-weight:900;font-size:17px;box-shadow:0 4px 0 #f0c1e4;border:2px solid #ffe08a}
+.isle .st{font-size:18px;letter-spacing:2px;margin-top:2px;text-shadow:0 2px 0 #fff}
+.isle.lock .orb{filter:grayscale(.85) brightness(1.05);opacity:.7}
+.isle.lock .orb::before{animation:none;border-color:rgba(255,255,255,.5)}
+.lockic{position:absolute;bottom:-6px;right:-6px;font-size:30px;background:#fff;border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(0,0,0,.15)}
+.path{text-align:center;font-size:18px;letter-spacing:10px;opacity:.85;margin:-2px 0;color:#fff;text-shadow:0 0 6px #ff9fd0}
+.isle.next .orb{animation:glow 1.6s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 0 4px rgba(255,201,60,.7),0 14px 30px rgba(155,93,229,.35)}50%{box-shadow:0 0 0 8px rgba(255,201,60,.95),0 0 40px rgba(255,111,181,.8)}}
+
+/* kingdom */
+.kban{border-radius:30px;padding:18px;text-align:center;border:4px solid #fff;box-shadow:0 14px 30px rgba(155,93,229,.25);position:relative;overflow:hidden}
+.kban .ic{font-size:76px;animation:float 3s ease-in-out infinite}
+.kban h2{margin:2px 0;font-size:32px;font-weight:900;color:#fff;text-shadow:0 3px 0 rgba(155,63,180,.55),0 0 18px rgba(255,255,255,.8)}
+.kban .en{font-weight:700;color:#fff;text-shadow:0 2px 0 rgba(155,63,180,.5)}
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.mode{border:4px solid #fff;border-radius:26px;padding:16px 6px;cursor:pointer;color:#fff;font-weight:900;font-size:19px;text-shadow:0 2px 0 rgba(0,0,0,.18);box-shadow:0 7px 0 rgba(120,60,160,.35),0 12px 24px rgba(155,93,229,.3);transition:transform .1s}
+.mode:active{transform:translateY(4px)}
+.mode b{display:block;font-size:46px;margin-bottom:4px}
+.mode small{display:block;font-size:13px;font-weight:700;opacity:.95}
+.m1{background:linear-gradient(145deg,#ff7aa8,#ff3f7f)}
+.m2{background:linear-gradient(145deg,#ffcf5c,#ff9b3d)}
+.m3{background:linear-gradient(145deg,#7fd8ff,#8a7dff)}
+.wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px}
+.wcell{background:#fff;border:3px solid #ffe0f1;border-radius:20px;padding:8px 4px;text-align:center;cursor:pointer;box-shadow:0 4px 0 #f6c9e6}
+.wcell:active{transform:translateY(3px)}
+.wcell .opic{height:64px;font-size:48px}
+.wcell .e{font-weight:700;font-size:16px;line-height:1.1}
+.wcell .z{font-size:13px;color:#a05b9c}
+
+/* pictures */
+.pic{display:inline-flex;align-items:center;justify-content:center;width:1.3em;height:1.3em;line-height:1;vertical-align:middle}
+.pic svg{width:100%;height:100%;overflow:visible}
+.emo{font-size:1em;line-height:1;font-family:'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif}
+.twobox{display:inline-flex;align-items:center;justify-content:center}
+.twobox .pic{width:.8em;height:.8em;font-size:.82em;margin:0 -.05em}
+.numb{display:inline-flex;align-items:center;justify-content:center;width:1.25em;height:1.25em;border-radius:30%;font-size:.72em;font-weight:700;color:#fff;
+background:linear-gradient(145deg,#ff8cc6,#9b6bff);border:3px solid #fff;box-shadow:0 4px 10px rgba(155,93,229,.35);text-shadow:0 2px 0 rgba(0,0,0,.18)}
+.bigletter{font-size:88px;font-weight:700;background:linear-gradient(180deg,#ff5fa8,#9b5de5);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 0 #fff)}
+.letopt{font-size:46px;font-weight:700;color:#9b3fd0}
+.dot{display:inline-block;width:22px;height:22px;border-radius:50%;margin-right:8px;vertical-align:-3px;border:2px solid #ddd}
+
+/* battle */
+.battle{border-radius:30px;padding:10px 10px 14px;border:4px solid #fff;box-shadow:0 14px 34px rgba(155,93,229,.3);position:relative;overflow:hidden}
+.bhead{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.bhead .btn,.bhead .chip{white-space:nowrap}
+@media (max-width:560px){.bhead .btn.sm{padding:6px 10px;font-size:14px}.bhead .chip{font-size:13px;padding:4px 8px}}
+.stage{position:relative;display:flex;align-items:flex-end;justify-content:space-between;height:200px;padding:0 3%;margin-top:4px}
+.stage::after{content:'';position:absolute;left:4%;right:4%;bottom:6px;height:22px;border-radius:50%;background:rgba(255,255,255,.55);filter:blur(2px);z-index:0}
+.side{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:4px}
+.hearts{font-size:18px;letter-spacing:-1px;background:rgba(255,255,255,.8);padding:2px 8px;border-radius:999px}
+.hero.hurt{animation:shake .45s}
+.hero.cast{animation:hop .4s}
+.mname{font-weight:900;background:#fff;border-radius:999px;padding:2px 12px;font-size:15px;box-shadow:0 3px 0 #f0c1e4}
+.hp{width:132px;height:16px;background:#fff;border-radius:9px;box-shadow:inset 0 0 0 2px #ffc2dd;overflow:hidden}
+.hp i{display:block;height:100%;background:linear-gradient(90deg,#ff5f8f,#ffb86b);transition:width .4s}
+.mon{font-size:92px;line-height:1;animation:bob 2s ease-in-out infinite;filter:drop-shadow(0 10px 6px rgba(0,0,0,.18))}
+.mon.boss{font-size:118px}
+.mon.hit{animation:hit .5s}
+.mon.lunge{animation:lunge .5s}
+.mon.poof{animation:poof .7s forwards}
+.mon.enter{animation:enter .6s}
+.crown-boss{position:absolute;top:-6px;font-size:26px}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(3deg)}}
+@keyframes hit{0%{transform:translateX(0);filter:brightness(1)}25%{transform:translateX(14px) rotate(10deg);filter:brightness(2.2) saturate(0)}50%{transform:translateX(-10px)}100%{transform:translateX(0)}}
+@keyframes lunge{40%{transform:translateX(-60px) scale(1.15)}100%{transform:translateX(0)}}
+@keyframes poof{to{transform:scale(1.8) rotate(40deg);opacity:0;filter:brightness(3)}}
+@keyframes enter{from{transform:translateX(120px) scale(.3);opacity:0}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-10px)}40%{transform:translateX(10px)}60%{transform:translateX(-7px)}80%{transform:translateX(7px)}}
+@keyframes hop{50%{transform:translateY(-16px) scale(1.05)}}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}
+.vs{position:relative;z-index:1;align-self:center;font-size:30px;font-weight:900;color:#fff;text-shadow:0 0 12px #ff5fa8,0 3px 0 #b04ac0}
+.magic{position:absolute;z-index:5;left:20%;bottom:42%;font-size:44px;pointer-events:none;animation:fly .5s ease-in forwards}
+@keyframes fly{to{left:72%;bottom:58%;transform:scale(1.7) rotate(360deg)}}
+.boom{position:absolute;z-index:6;right:12%;bottom:40%;font-size:64px;pointer-events:none;animation:boom .6s forwards}
+@keyframes boom{from{transform:scale(.2);opacity:1}to{transform:scale(1.8);opacity:0}}
+.dmg{position:absolute;z-index:6;right:16%;top:4%;font-size:30px;font-weight:900;color:#ff3f9a;text-shadow:0 2px 0 #fff,0 0 8px #fff;pointer-events:none;animation:rise 1s forwards}
+@keyframes rise{to{transform:translateY(-40px);opacity:0}}
+.combo{position:absolute;z-index:6;left:50%;top:30%;transform:translateX(-50%);font-size:30px;font-weight:900;color:#ffae00;text-shadow:0 3px 0 #fff,0 0 12px #fff;animation:rise 1.2s forwards;white-space:nowrap}
+.qcard{background:rgba(255,255,255,.88);border:3px solid #fff;border-radius:26px;padding:12px;margin-top:8px;box-shadow:0 8px 22px rgba(155,93,229,.2);animation:zoomin .3s}
+.qzh{display:flex;align-items:center;justify-content:space-between;gap:8px;font-weight:900;font-size:19px;color:#8a3fb0}
+.replay{border:0;background:linear-gradient(135deg,#ffe0f2,#e8dcff);border-radius:999px;padding:6px 12px;font-weight:700;font-size:15px;color:var(--ink);cursor:pointer;white-space:nowrap;box-shadow:0 3px 0 #e2b6e6}
+.qcenter{text-align:center;font-size:96px;min-height:80px;margin:6px 0;display:flex;justify-content:center;align-items:center}
+.qen{text-align:center;font-size:26px;font-weight:700;color:#5a2a6e;margin-bottom:8px}
+.bigspeak{width:120px;height:120px;border-radius:50%;border:5px solid #fff;font-size:56px;cursor:pointer;background:radial-gradient(circle at 35% 30%,#fff,#ffc6e8 40%,#c39bff);box-shadow:0 0 0 6px rgba(255,201,60,.6),0 12px 26px rgba(155,93,229,.35);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.07)}}
+.opts{display:grid;gap:12px}
+.opts.pics.n4{grid-template-columns:repeat(4,1fr)}
+.opts.pics.n3{grid-template-columns:repeat(3,1fr)}
+.opts.pics.n2{grid-template-columns:repeat(2,1fr)}
+.opts.words{grid-template-columns:1fr}
+.opt{position:relative;background:#fff;border:4px solid #ffd6f0;border-radius:22px;padding:8px;cursor:pointer;font-size:24px;font-weight:700;color:var(--ink);box-shadow:0 6px 0 #f3b6dc;transition:transform .1s;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.opt:active{transform:translateY(4px);box-shadow:0 2px 0 #f3b6dc}
+.opt.words{flex-direction:row;justify-content:space-between;text-align:left;padding:12px 14px;min-height:62px}
+.opt .opic{font-size:62px;height:90px;display:flex;align-items:center;justify-content:center}
+.opt .olab{opacity:0;font-size:18px;min-height:22px;transition:opacity .3s}
+.qcard.done .olab{opacity:1}
+.osay{flex:none;font-size:22px;background:#fff0f8;border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;margin-left:8px;box-shadow:0 3px 0 #f0c1e4}
+.opt.right{border-color:#3ccf8e;background:#eafff4;box-shadow:0 6px 0 #2bb57a;animation:pop .45s}
+.opt.right::after{content:'✔';position:absolute;top:-12px;right:-8px;background:#3ccf8e;color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:18px;border:3px solid #fff}
+.opt.wrong{border-color:#ff6b8b;background:#fff0f3;animation:shake .4s}
+.opt.gone{visibility:hidden}
+.countbox{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;font-size:40px;max-width:360px}
+.seq{display:flex;gap:12px;font-size:60px}
+.seq span{background:#fff;border-radius:20px;padding:4px 16px;box-shadow:0 5px 0 #f0c1e4;font-weight:700;color:#9b3fd0}
+.seq .qm{color:#ff5fa8;animation:pulse 1s infinite}
+.bfoot{display:flex;justify-content:center;gap:10px;margin-top:10px}
+
+/* cards */
+.flip{perspective:1000px;width:min(320px,82vw);height:340px;margin:10px auto;cursor:pointer}
+.flip .in{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:30px;border:5px solid #fff;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 14px 30px rgba(155,93,229,.3)}
+.face.f{background:radial-gradient(circle at 30% 20%,#fff,#ffe2f3 45%,#e6d6ff)}
+.face.b{background:linear-gradient(160deg,#ff8cc6,#a77bff);color:#fff;transform:rotateY(180deg)}
+.face .opic{font-size:130px;height:180px;display:flex;align-items:center}
+.face .e{font-size:44px;font-weight:700;text-shadow:0 3px 0 rgba(0,0,0,.15);text-align:center;padding:0 10px}
+.face .z{font-size:24px;font-weight:700;margin-top:6px}
+.tip{font-size:14px;color:#a05b9c;font-weight:700}
+
+/* speak */
+.spk{text-align:center}
+.spk .opic{font-size:110px;height:150px;display:flex;align-items:center;justify-content:center}
+.spk .t{font-size:34px;font-weight:700}
+.mic{width:130px;height:130px;border-radius:50%;border:6px solid #fff;font-size:60px;cursor:pointer;background:radial-gradient(circle at 35% 30%,#fff,#ff9fcf 45%,#ff4f9a);box-shadow:0 0 0 7px rgba(255,201,60,.6),0 14px 30px rgba(255,79,154,.4)}
+.mic.on{animation:pulse .7s infinite;background:radial-gradient(circle at 35% 30%,#fff,#ff8a8a 45%,#ff2d55)}
+.stars3{font-size:46px;letter-spacing:4px;min-height:56px}
+.stars3 span{display:inline-block;animation:starIn .5s backwards}
+@keyframes starIn{from{transform:scale(0) rotate(-90deg)}}
+
+/* misc */
+.modal{position:fixed;inset:0;background:rgba(90,42,110,.45);display:flex;align-items:center;justify-content:center;z-index:60;padding:16px;backdrop-filter:blur(3px)}
+.mbox{background:radial-gradient(circle at 50% 0,#fff,#ffeaf6 60%,#efe3ff);border:5px solid #fff;border-radius:32px;max-width:440px;width:100%;padding:20px;text-align:center;box-shadow:0 0 0 4px rgba(255,201,60,.7),0 20px 50px rgba(90,42,110,.4);animation:zoomin .35s;max-height:92vh;overflow:auto}
+.mbox h2{margin:6px 0;font-size:30px;font-weight:900;color:#d63f96}
+@keyframes zoomin{from{transform:scale(.6);opacity:0}}
+#toast{position:fixed;left:50%;top:18px;transform:translate(-50%,-120px);z-index:80;background:#fff;border:3px solid #ffd27a;border-radius:999px;padding:10px 20px;font-weight:900;box-shadow:0 8px 24px rgba(155,93,229,.3);transition:transform .35s;max-width:92vw;text-align:center}
+#toast.show{transform:translate(-50%,0)}
+.confetti{position:fixed;top:-50px;z-index:70;font-size:28px;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(112vh) rotate(540deg)}}
+.pcards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pcard{border:4px solid #fff;border-radius:24px;background:rgba(255,255,255,.75);cursor:pointer;padding:6px 2px;box-shadow:0 6px 0 #ecc0e6;color:var(--ink);font-weight:900;font-size:15px}
+.pcard.on{background:linear-gradient(160deg,#fff4c2,#ffd6f0);box-shadow:0 0 0 4px #ffc93c,0 6px 0 #e0a800;transform:scale(1.04)}
+input.name{font:inherit;font-size:24px;font-weight:700;text-align:center;border:4px solid #ffd6f0;border-radius:999px;padding:8px 16px;width:220px;color:var(--ink);outline:none}
+.shop{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.item{background:#fff;border:3px solid #ffe0f1;border-radius:22px;padding:10px;text-align:center;box-shadow:0 5px 0 #f6c9e6}
+.item b{font-size:48px;display:block}
+.item .n{font-weight:900}
+.item .d{font-size:12px;color:#a05b9c;min-height:30px}
+.sticker{background:#fff;border-radius:20px;padding:8px;text-align:center;border:3px dashed #ffc2e2}
+.sticker b{font-size:44px;display:block}
+.sticker.no b{filter:grayscale(1) brightness(1.6);opacity:.35}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px}
+.list{width:100%;border-collapse:collapse;font-size:15px}
+.list td{padding:6px;border-bottom:1px dashed #f0c1e4}
+h3{margin:4px 0 10px;font-size:20px;font-weight:900;color:#b0479a}
+.seg button{border:3px solid #fff;background:#fff;border-radius:999px;padding:6px 14px;font-weight:700;cursor:pointer;color:var(--ink);box-shadow:0 3px 0 #f0c1e4}
+.seg button.on{background:linear-gradient(135deg,#ff8cc6,#b06bff);color:#fff}
+@media (max-width:560px){
+ .modes{gap:8px}.mode{font-size:16px;padding:12px 2px}.mode b{font-size:38px}
+ .opts.pics.n4{grid-template-columns:repeat(2,1fr)}
+ .opt .opic{font-size:54px;height:76px}
+ .stage{height:170px}.mon{font-size:76px}.mon.boss{font-size:96px}
+ .qcenter{font-size:84px}.qen{font-size:22px}.opt{font-size:20px}
+ .orb{width:110px;height:110px}.orb span{font-size:52px}.isle{width:150px}
+ .pcards{grid-template-columns:repeat(2,1fr)}
+ .hp{width:110px}
+}
+</style>
+</head>
+<body>
+<div id="fx"></div>
+<div id="app"></div>
+<div id="toast"></div>
+<script>
+/* ===================== 基本工具 ===================== */
+const $=s=>document.querySelector(s);
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];}return a;};
+const pickN=(a,n)=>shuffle(a).slice(0,Math.max(0,n));
+const rnd=a=>a[Math.random()*a.length|0];
+const today=()=>{const d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();};
+const art=w=>/^[aeiou]/i.test(w)?'an':'a';
+const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
+const ONES=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+const TENS=['','','twenty','thirty','forty','fifty','sixty'];
+function numWord(n){if(n<20)return ONES[n];const t=TENS[Math.floor(n/10)],o=n%10;return o?t+'-'+ONES[o]:t;}
+function toast(t){const el=$('#toast');el.innerHTML=t;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),2300);}
+function confetti(n=36){const em=['💖','✨','⭐','💎','🌸','🎀','🦋','👑'];for(let i=0;i<n;i++){const d=document.createElement('div');d.className='confetti';d.textContent=em[i%em.length];d.style.left=Math.random()*100+'vw';d.style.animationDuration=(2+Math.random()*2)+'s';d.style.animationDelay=Math.random()*.7+'s';document.body.appendChild(d);setTimeout(()=>d.remove(),5000);}}
+(function fx(){const f=$('#fx');let h='';const s=['✦','✧','★','✨','♡'];for(let i=0;i<34;i++)h+=`<span class="tw" style="left:${Math.random()*100}%;top:${Math.random()*100}%;font-size:${8+Math.random()*18}px;animation-delay:${Math.random()*3}s">${rnd(s)}</span>`;
+const b=['🫧','💗','🫧','🌸','🫧','💜'];for(let i=0;i<10;i++)h+=`<span class="bub" style="left:${Math.random()*100}%;font-size:${18+Math.random()*22}px;animation-duration:${14+Math.random()*14}s;animation-delay:${-Math.random()*20}s">${rnd(b)}</span>`;f.innerHTML=h;})();
+
+/* ===================== 聲音 ===================== */
+let VEN=null,VZH=null;
+function pickVoices(){if(!('speechSynthesis' in window))return;const vs=speechSynthesis.getVoices();
+VEN=vs.find(v=>/^en[-_]US/i.test(v.lang)&&/Jenny|Aria|Ava|Samantha|Zira|Google US/i.test(v.name))||vs.find(v=>/^en[-_]US/i.test(v.lang))||vs.find(v=>/^en/i.test(v.lang))||null;
+VZH=vs.find(v=>/zh[-_]TW/i.test(v.lang))||vs.find(v=>/zh[-_]HK/i.test(v.lang))||vs.find(v=>/^zh/i.test(v.lang))||null;}
+if('speechSynthesis' in window){pickVoices();speechSynthesis.onvoiceschanged=pickVoices;}
+function utter(text,lang){if(!('speechSynthesis' in window)||!text)return;const u=new SpeechSynthesisUtterance(text);u.lang=lang==='zh'?'zh-TW':'en-US';const v=lang==='zh'?VZH:VEN;if(v)u.voice=v;u.rate=lang==='zh'?1.05:S.set.rate;u.pitch=1.15;speechSynthesis.speak(u);}
+function hush(){try{speechSynthesis.cancel();}catch(e){}}
+function say(t){hush();utter(t,'en');}
+function sayZh(t){hush();if(S.set.zh)utter(t,'zh');}
+function sayZhEn(zh,en){hush();if(zh&&S.set.zh)utter(zh,'zh');if(en)utter(en,'en');}
+let AC=null;
+function sfx(type){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const seqs={magic:[[784,.07],[988,.07],[1319,.07],[1568,.18]],bad:[[392,.12],[294,.22]],win:[[523,.12],[659,.12],[784,.12],[1047,.14],[1319,.45]],gem:[[1568,.05],[2093,.14]],pop:[[660,.04],[990,.08]],boss:[[196,.18],[165,.3]],lv:[[659,.1],[784,.1],[988,.1],[1319,.1],[1568,.1],[1976,.4]]};
+const seq=seqs[type];if(!seq)return;let t=AC.currentTime;seq.forEach(([f,d])=>{const o=AC.createOscillator(),g=AC.createGain();o.type=type==='bad'||type==='boss'?'triangle':'sine';o.frequency.value=f;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.12,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+d+.02);
+if(type!=='bad'&&type!=='boss'){const o2=AC.createOscillator(),g2=AC.createGain();o2.type='sine';o2.frequency.value=f*2;g2.gain.setValueAtTime(.03,t);g2.gain.exponentialRampToValueAtTime(.0001,t+d);o2.connect(g2);g2.connect(AC.destination);o2.start(t);o2.stop(t+d+.02);}t+=d;});}catch(e){}}
+
+/* ===================== 圖片 ===================== */
+const SVG={
+desk:'<svg viewBox="0 0 100 100"><rect x="8" y="34" width="84" height="11" rx="4" fill="#d8955a"/><rect x="8" y="34" width="84" height="4" rx="2" fill="#f0b47a"/><rect x="14" y="45" width="8" height="44" rx="2" fill="#a86c34"/><rect x="78" y="45" width="8" height="44" rx="2" fill="#a86c34"/><rect x="46" y="45" width="32" height="20" rx="2" fill="#c07f43"/><circle cx="62" cy="55" r="3" fill="#ffd166"/></svg>',
+board:'<svg viewBox="0 0 100 100"><rect x="8" y="12" width="84" height="58" rx="5" fill="#fff" stroke="#a0a9bd" stroke-width="5"/><path d="M20 32 q8 -9 16 0 t16 0 t16 0" stroke="#2f80ff" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M20 50 h34" stroke="#ff4f8b" stroke-width="3.5" stroke-linecap="round"/><path d="M62 46 l6 6 l10 -12" stroke="#3ccf4e" stroke-width="3.5" fill="none" stroke-linecap="round"/><line x1="28" y1="70" x2="20" y2="94" stroke="#a0a9bd" stroke-width="5" stroke-linecap="round"/><line x1="72" y1="70" x2="80" y2="94" stroke="#a0a9bd" stroke-width="5" stroke-linecap="round"/></svg>',
+eraser:'<svg viewBox="0 0 100 100"><g transform="rotate(-18 50 50)"><rect x="14" y="34" width="72" height="32" rx="7" fill="#ffa3c8"/><rect x="14" y="34" width="34" height="32" rx="7" fill="#7cc6ff"/><rect x="40" y="34" width="10" height="32" fill="#7cc6ff"/><rect x="14" y="34" width="72" height="8" rx="4" fill="#fff" opacity=".35"/></g></svg>',
+marker:'<svg viewBox="0 0 100 100"><g transform="rotate(-38 50 50)"><rect x="39" y="8" width="22" height="64" rx="7" fill="#f6f6f6" stroke="#c4c4c4" stroke-width="2"/><rect x="39" y="8" width="22" height="24" rx="7" fill="#2f80ff"/><rect x="39" y="44" width="22" height="10" fill="#2f80ff" opacity=".35"/><path d="M42 72 h16 l-4 16 h-8z" fill="#9aa0a6"/><path d="M46 88 h8 l-2 6 h-4z" fill="#2f80ff"/></g></svg>',
+bottle:'<svg viewBox="0 0 100 100"><rect x="38" y="6" width="24" height="12" rx="4" fill="#ff6fb5"/><rect x="42" y="16" width="16" height="6" fill="#ff9fd0"/><path d="M34 24 h32 q6 6 6 16 v44 q0 9 -9 9 h-26 q-9 0 -9 -9 v-44 q0 -10 6 -16z" fill="#bfe8ff" stroke="#3aa0e8" stroke-width="3"/><path d="M28 58 q22 8 44 0 v26 q0 9 -9 9 h-26 q-9 0 -9 -9z" fill="#4fb3ff" opacity=".65"/><rect x="38" y="30" width="6" height="22" rx="3" fill="#fff" opacity=".8"/></svg>',
+pbox:'<svg viewBox="0 0 100 100"><rect x="24" y="22" width="9" height="30" fill="#ffd60a"/><path d="M24 22 l4.5 -10 l4.5 10z" fill="#f4c27a"/><rect x="42" y="16" width="9" height="36" fill="#ff5c8a"/><path d="M42 16 l4.5 -10 l4.5 10z" fill="#f4c27a"/><rect x="60" y="24" width="9" height="28" fill="#3ccf4e"/><path d="M60 24 l4.5 -10 l4.5 10z" fill="#f4c27a"/><rect x="10" y="44" width="80" height="38" rx="9" fill="#9b5de5"/><rect x="10" y="44" width="80" height="11" rx="5" fill="#b98af5"/><circle cx="50" cy="66" r="6" fill="#ffd166" stroke="#fff" stroke-width="2"/><path d="M20 74 l4 -4 l4 4 l-4 4z" fill="#fff" opacity=".7"/></svg>',
+pond:'<svg viewBox="0 0 100 100"><ellipse cx="50" cy="60" rx="45" ry="26" fill="#6fd06a"/><ellipse cx="50" cy="60" rx="39" ry="21" fill="#4fb3ff"/><path d="M24 54 q8 -4 16 0" stroke="#fff" stroke-width="2.5" fill="none" opacity=".8"/><path d="M58 70 q6 -3 12 0" stroke="#fff" stroke-width="2.5" fill="none" opacity=".8"/><ellipse cx="34" cy="64" rx="9" ry="5" fill="#3ccf4e"/><ellipse cx="64" cy="56" rx="8" ry="4.5" fill="#3ccf4e"/><circle cx="66" cy="53" r="3.5" fill="#ff8cc6"/></svg>',
+longp:'<svg viewBox="0 0 100 100"><rect x="2" y="42" width="78" height="16" fill="#ffd60a"/><rect x="2" y="42" width="78" height="5" fill="#fff" opacity=".35"/><rect x="2" y="42" width="10" height="16" fill="#ff8cc6"/><path d="M80 42 l17 8 l-17 8z" fill="#f4c27a"/><path d="M91.5 47.3 l5.5 2.7 l-5.5 2.7z" fill="#444"/></svg>',
+shortp:'<svg viewBox="0 0 100 100"><rect x="34" y="42" width="24" height="16" fill="#ffd60a"/><rect x="34" y="42" width="24" height="5" fill="#fff" opacity=".35"/><rect x="34" y="42" width="8" height="16" fill="#ff8cc6"/><path d="M58 42 l17 8 l-17 8z" fill="#f4c27a"/><path d="M69.5 47.3 l5.5 2.7 l-5.5 2.7z" fill="#444"/></svg>'
+};
+function blob(c){const stroke=c==='#fff'?'#d9d0e6':'rgba(0,0,0,.08)';return `<svg viewBox="0 0 100 100"><path d="M50 8 C72 6 92 22 90 46 C94 70 76 92 52 90 C28 94 8 76 10 52 C6 28 26 10 50 8Z" fill="${c}" stroke="${stroke}" stroke-width="4"/><ellipse cx="36" cy="30" rx="11" ry="6" fill="#fff" opacity=".5" transform="rotate(-25 36 30)"/></svg>`;}
+const DAYEN=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+function daySVG(i){return `<svg viewBox="0 0 100 100"><rect x="10" y="14" width="80" height="78" rx="12" fill="#fff" stroke="#ff9fd0" stroke-width="3"/><path d="M10 26 a12 12 0 0 1 12 -12 h56 a12 12 0 0 1 12 12 v14 h-80z" fill="#ff5c9e"/><circle cx="30" cy="14" r="4.5" fill="#9b5de5"/><circle cx="70" cy="14" r="4.5" fill="#9b5de5"/><text x="50" y="35" text-anchor="middle" font-size="16" fill="#fff" font-weight="700" font-family="Fredoka,sans-serif">${DAYEN[i]}</text><text x="50" y="74" text-anchor="middle" font-size="19" fill="#7a3fc0" font-weight="900" font-family="Noto Sans TC,Microsoft JhengHei,sans-serif">星期${'一二三四五六日'[i]}</text></svg>`;}
+const E=e=>`<span class="emo">${e}</span>`;
+const ADJPIC={
+big:'<span class="emo" style="font-size:1.3em">🐘</span>',small:'<span class="emo" style="font-size:.45em">🐭</span>',
+heavy:E('🏋️‍♀️'),light:E('🪶'),old:E('🏚️'),new:'<span class="emo">🎁</span><span class="emo" style="font-size:.45em;margin-left:-.3em;align-self:flex-start">✨</span>',
+long:SVG.longp,short:SVG.shortp};
+function pic(p){
+ if(p.startsWith('x2:')){const inner=pic(p.slice(3));return `<span class="pic"><span class="twobox">${inner}${inner}</span></span>`;}
+ if(p.startsWith('svg:'))return `<span class="pic">${SVG[p.slice(4)]}</span>`;
+ if(p.startsWith('col:'))return `<span class="pic">${blob(p.slice(4))}</span>`;
+ if(p.startsWith('day:'))return `<span class="pic">${daySVG(+p.slice(4))}</span>`;
+ if(p.startsWith('num:'))return `<span class="pic"><span class="numb">${p.slice(4)}</span></span>`;
+ if(p.startsWith('adj:'))return `<span class="pic">${ADJPIC[p.slice(4)]}</span>`;
+ if(p.startsWith('h:'))return `<span class="pic" style="width:auto">${p.slice(2)}</span>`;
+ return `<span class="pic">${E(p)}</span>`;
+}
+
+/* ===================== 課程內容（來自何嘉仁聯絡簿 8/31～10/16） ===================== */
+const SCHOOL=[['desk','書桌','svg:desk'],['chair','椅子','🪑'],['whiteboard','白板','svg:board'],['pencil','鉛筆','✏️'],['eraser','橡皮擦','svg:eraser'],['marker','白板筆','svg:marker'],['bookbag','書包','🎒'],['water bottle','水壺','svg:bottle'],['pencil box','鉛筆盒','svg:pbox'],['ruler','尺','📏'],['crayon','蠟筆','🖍️']];
+const COLORS=[['red','紅色','col:#ff3b4e'],['yellow','黃色','col:#ffd60a'],['pink','粉紅色','col:#ff8cc6'],['green','綠色','col:#3ccf4e'],['purple','紫色','col:#9b5de5'],['orange','橘色','col:#ff8c1a'],['blue','藍色','col:#2f80ff'],['black','黑色','col:#2a2a2a'],['white','白色','col:#fff'],['gold','金色','col:gold']];
+const COLOR_OBJ={red:['🍎','🍓','❤️'],yellow:['🍌','🌻','🐥'],pink:['🌸','🐷','🎀'],green:['🐸','🥦','🍀'],purple:['🍇','🔮','🍆'],orange:['🍊','🥕','🎃'],blue:['💧','🫐','🐳'],black:['🎱','🐈‍⬛','🕶️'],white:['🥚','☁️','🦢'],gold:['🏆','👑','🔔']};
+const PETS=[['bird','小鳥','🐦'],['duck','鴨子','🦆'],['frog','青蛙','🐸'],['turtle','烏龜','🐢'],['cat','貓咪','🐱'],['dog','小狗','🐶'],['snake','蛇','🐍'],['rabbit','兔子','🐰']];
+const NATURE=[['cloud','雲','☁️','clouds'],['river','河流','🏞️','rivers'],['pond','池塘','svg:pond','ponds'],['mountain','山','⛰️','mountains'],['tree','樹','🌳','trees'],['flower','花','🌸','flowers'],['rock','石頭','🪨','rocks']];
+const ZOO=[['tigers','老虎','x2:🐯','tiger'],['hippos','河馬','x2:🦛','hippo'],['bears','熊','x2:🐻','bear'],['pandas','熊貓','x2:🐼','panda'],['zebras','斑馬','x2:🦓','zebra'],['koalas','無尾熊','x2:🐨','koala'],['elephants','大象','x2:🐘','elephant'],['lions','獅子','x2:🦁','lion']];
+const ADJ=[['big','大的','adj:big'],['small','小的','adj:small'],['heavy','重的','adj:heavy'],['light','輕的','adj:light'],['old','舊的','adj:old'],['new','新的','adj:new'],['long','長的','adj:long'],['short','短的','adj:short']];
+const ADJ_SENT=[['🐘','The elephant is ___.','big','small'],['x2:🐦','The birds are ___.','small','big'],['🪨','The rock is ___.','heavy','light'],['x2:☁️','The clouds are ___.','light','heavy'],
+['h:<span class="emo">🚗</span><span class="emo" style="font-size:.5em;margin-left:-.4em">🕸️</span>','The toy car is ___.','old','new'],['h:<span class="emo">🪆</span><span class="emo">🪆</span><span class="emo" style="font-size:.5em">✨</span>','The dolls are ___.','new','old'],
+['h:<span class="emo" style="display:inline-block;transform:scaleX(1.9);margin:0 .5em">🐍</span>','The snake is ___.','long','short'],['x2:svg:shortp','The pencils are ___.','short','long']];
+const ADJ_YN=[['x2:🐘','the elephants','big',1],['x2:🐘','the elephants','small',0],['x2:🐦','the birds','small',1],['x2:🐦','the birds','big',0],['x2:🪨','the rocks','heavy',1],['x2:🪨','the rocks','light',0],['x2:☁️','the clouds','light',1],['x2:☁️','the clouds','heavy',0],['x2:svg:longp','the pencils','long',1],['x2:svg:shortp','the pencils','long',0]];
+const WEATHER=[['sunny','晴天','☀️'],['rainy','下雨天','🌧️'],['cloudy','陰天','🌥️'],['windy','颳風','🌬️'],['snowy','下雪','❄️']];
+const FEEL=[['happy','開心','😊'],['sad','難過','😢'],['mad','生氣','😠'],['fine','很好','🙂']];
+const DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'].map((d,i)=>[d,'星期'+'一二三四五六日'[i],'day:'+i]);
+const FIXED=[['How are you?','I am fine, thank you.'],['How old are you?','I am 7 years old.'],['How is the weather today?','It is sunny.'],['How do you feel today?','I feel happy.'],['What day is today?','Today is Monday.'],['What color is it?','It is pink.']];
+const NUMS=[...Array(20)].map((_,i)=>i+1).concat([30,40,50]).map(n=>[numWord(n),'數字 '+n,'num:'+n]);
+const PHON=[['A','apple','蘋果','🍎'],['B','ball','球','⚽'],['C','cat','貓咪','🐱'],['D','dog','小狗','🐶'],['E','egg','蛋','🥚'],['F','flower','花','🌸'],['G','goat','山羊','🐐'],['H','hat','帽子','🎩'],['I','insect','昆蟲','🐞'],['J','jacket','夾克','🧥'],['K','kite','風箏','🪁'],['L','lion','獅子','🦁'],['M','monkey','猴子','🐵'],['N','nose','鼻子','👃'],['O','octopus','章魚','🐙'],['P','pig','小豬','🐷'],['Q','queen','女王','👸'],['R','rabbit','兔子','🐰'],['S','snake','蛇','🐍'],['T','turtle','烏龜','🐢'],['U','umbrella','雨傘','☂️']];
+const PHONW=PHON.map(p=>[p[1],p[2],p[3],p[0]]);
+
+const KD=[
+{name:'文具城堡',en:'School Castle',icon:'🏰',bg:'linear-gradient(160deg,#ffb3d9,#d4b0ff)',src:'8/31～9/11 文具、What is this? / Is this your ___?',
+ words:SCHOOL,gens:['listen','listen','look','whatIs','isYour'],mons:[['👾','泡泡怪'],['🍄','毒蘑菇']],boss:['🐊','鱷魚大王'],
+ speak:['pencil','eraser','desk','chair','bookbag','ruler','crayon','water bottle','What is this?','This is a pencil.','Is this your eraser?','Yes, it is my eraser.']},
+{name:'彩虹花園',en:'Rainbow Garden',icon:'🌈',bg:'linear-gradient(160deg,#ffc6e3,#bfeaff)',src:'9/7～9/23 顏色、What color is it? It is ___.',
+ words:COLORS,gens:['listen','listen','look','colorQ','colorQ'],mons:[['🐛','毛毛蟲'],['🦇','小蝙蝠']],boss:['🌪️','龍捲風怪'],
+ speak:['red','yellow','pink','green','purple','orange','blue','black','white','gold','What color is it?','It is pink.']},
+{name:'寵物森林',en:'Pet Forest',icon:'🐾',bg:'linear-gradient(160deg,#bff3c2,#fff1a6)',src:'9/14～9/18 動物 a bird, a duck…',
+ words:PETS,gens:['listen','listen','look','whatIs'],mons:[['🦨','臭臭鼬'],['🐺','大野狼']],boss:['🦖','暴龍王'],
+ speak:['bird','duck','frog','turtle','cat','dog','snake','rabbit','What is this?','This is a rabbit.','How are you?','I am fine, thank you.']},
+{name:'大自然山谷',en:'Nature Valley',icon:'🏞️',bg:'linear-gradient(160deg,#aeeaff,#c4f5c4)',src:'9/21～9/30 單複數 a tree / trees',
+ words:NATURE,gens:['listen','look','pluralPic','pluralSent','pluralSent'],mons:[['👻','調皮幽靈'],['🌵','仙人掌怪']],boss:['🌋','火山怪'],
+ speak:['cloud','river','pond','mountain','tree','flower','rock','It is a flower.','They are flowers.','How old are you?','I am 7 years old.']},
+{name:'動物園王國',en:'Zoo Kingdom',icon:'🦁',bg:'linear-gradient(160deg,#ffe1a3,#ffbfd3)',src:'10/1～10/12 What are they? Are they ___?',
+ words:ZOO,gens:['listen','look','whatAre','areThey','areThey'],lookEn:'What are they?',mons:[['🦍','大猩猩'],['🐗','大山豬']],boss:['🦈','鯊魚王'],
+ speak:['tigers','hippos','bears','pandas','zebras','koalas','elephants','lions','What are they?','They are lions.','Are they tigers?','No, they are not.']},
+{name:'相反魔法塔',en:'Opposite Tower',icon:'🔮',bg:'linear-gradient(160deg,#d6bfff,#ffc0ec)',src:'10/14～10/16 big / small、heavy / light…',
+ words:ADJ,gens:['listen','listen','adjFill','adjFill','adjYN'],mons:[['🎃','南瓜怪'],['🧊','冰塊怪']],boss:['🦑','大魷魚'],
+ speak:['big','small','heavy','light','old','new','long','short','The elephant is big.','The snake is long.','Are the elephants big?','Yes, they are big.']},
+{name:'天氣心情島',en:'Weather Island',icon:'☀️',bg:'linear-gradient(160deg,#fff09a,#b5dcff)',src:'每堂課句型：星期、天氣、心情',
+ words:WEATHER.concat(FEEL,DAYS),groups:[WEATHER,FEEL,DAYS],gens:['listen','listen','qaWeather','qaFeel','qaDay','qaFixed','qaYest'],lookEn:'What is it?',mons:[['🌧️','雨雲怪'],['⚡','閃電怪']],boss:['☃️','雪人怪'],
+ speak:['sunny','rainy','cloudy','windy','happy','sad','Monday','Friday','How is the weather today?','It is sunny.','How do you feel today?','I feel happy.','What day is today?','Today is Monday.']},
+{name:'數字星空',en:'Number Stars',icon:'🌟',bg:'linear-gradient(160deg,#c9c0ff,#ffd2f2)',src:'9/14 數字 11-20、10/7 起 Number 1-50',
+ words:NUMS,gens:['listenNum','listenNum','countQ','seqQ'],mons:[['🤖','機器人'],['👽','外星人']],boss:['🛸','飛碟艦長'],
+ speak:['one','five','seven','ten','eleven','twelve','thirteen','fifteen','twenty','thirty','forty','fifty']},
+{name:'字母水晶宮',en:'ABC Palace',icon:'💎',bg:'linear-gradient(160deg,#ffcdea,#b2efff)',src:'發音 Aa-apple ～ Uu-umbrella（第一個音）',
+ words:PHONW,gens:['startQ','startQ','firstQ','firstQ','listen'],mons:[['🦉','貓頭鷹'],['🧛','吸血伯爵']],boss:['🧙‍♀️','壞巫婆'],
+ speak:['apple','ball','cat','dog','egg','flower','goat','hat','insect','jacket','kite','lion','monkey','nose','octopus','pig','queen','rabbit','snake','turtle','umbrella']}
+];
+const ALLW=[];KD.forEach((k,ki)=>k.words.forEach(w=>ALLW.push([w,ki])));
+function findPic(t){const w=ALLW.find(x=>x[0][0].toLowerCase()===t.toLowerCase());if(w)return w[0];return null;}
+
+/* ===================== 公主 ===================== */
+const PR=[
+{name:'櫻花公主',h:'#7a4526',h2:'#a8683b',d:'#ff7cc3',d2:'#ffd0ea',gem:'#ff3d9a',icon:'🌸',cheer:'Sakura magic!'},
+{name:'月光公主',h:'#b7aef5',h2:'#e3ddff',d:'#8f6bff',d2:'#dcd0ff',gem:'#5b3df5',icon:'🌙',cheer:'Moonlight magic!'},
+{name:'海洋公主',h:'#22a89f',h2:'#7fe3d8',d:'#3fb8f0',d2:'#c2f0ff',gem:'#008fb3',icon:'🐚',cheer:'Ocean magic!'},
+{name:'彩虹公主',h:'#f5c437',h2:'#ffe796',d:'#ff9ecf',d2:'#fff',gem:'#ff6fb5',icon:'🌈',cheer:'Rainbow magic!',rainbow:1},
+{name:'草莓公主',h:'#d9482f',h2:'#ff8a6b',d:'#ff4d6d',d2:'#ffd6df',gem:'#d6002f',icon:'🍓',cheer:'Strawberry magic!'},
+{name:'星星公主',h:'#2b2140',h2:'#5a4a80',d:'#ffbe2e',d2:'#fff2bf',gem:'#7a4dff',icon:'⭐',cheer:'Star magic!'}];
+const RANKS=[[1,'小小公主'],[3,'魔法公主'],[6,'皇冠公主'],[10,'天使公主'],[15,'彩虹女王']];
+let UID=0;
+function star(cx,cy,R,r){let p='';for(let i=0;i<10;i++){const a=Math.PI/5*i-Math.PI/2,rr=i%2?r:R;p+=(i?'L':'M')+(cx+rr*Math.cos(a)).toFixed(1)+' '+(cy+rr*Math.sin(a)).toFixed(1);}return p+'Z';}
+function princessSVG(pi,rank,w=120){
+ const P=PR[pi||0],id='p'+(UID++),skin='#ffe3d1',arm='#ffd9c4';
+ const dress=P.rainbow?`url(#${id}r)`:`url(#${id}d)`;
+ const defs=`<linearGradient id="${id}d" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${P.d2}"/><stop offset="1" stop-color="${P.d}"/></linearGradient>
+<linearGradient id="${id}r" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ff7eb6"/><stop offset=".25" stop-color="#ffd166"/><stop offset=".5" stop-color="#7ee8a2"/><stop offset=".75" stop-color="#74c0fc"/><stop offset="1" stop-color="#b197fc"/></linearGradient>
+<linearGradient id="${id}g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6b0"/><stop offset="1" stop-color="#ffb300"/></linearGradient>
+<radialGradient id="${id}h"><stop offset="0" stop-color="#fff7c2" stop-opacity=".95"/><stop offset="1" stop-color="#ffd6f5" stop-opacity="0"/></radialGradient>
+<linearGradient id="${id}w" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="${rank>=4?'#d0a8ff':'#bfe6ff'}" stop-opacity=".75"/></linearGradient>`;
+ let s='';
+ if(rank>=4)s+=`<circle cx="60" cy="80" r="64" fill="url(#${id}h)"/>`;
+ if(rank>=3)s+=`<path d="M52 84 C18 48 0 72 8 98 C14 114 40 106 52 94Z" fill="url(#${id}w)" stroke="#fff" stroke-width="1.5"/><path d="M68 84 C102 48 120 72 112 98 C106 114 80 106 68 94Z" fill="url(#${id}w)" stroke="#fff" stroke-width="1.5"/><path d="M50 92 C30 96 22 112 34 120 C42 122 50 110 52 100Z" fill="url(#${id}w)" opacity=".8"/><path d="M70 92 C90 96 98 112 86 120 C78 122 70 110 68 100Z" fill="url(#${id}w)" opacity=".8"/>`;
+ s+=`<path d="M34 42 Q24 98 36 120 Q48 126 60 120 Q72 126 84 120 Q96 98 86 42 Z" fill="${P.h}"/>`;
+ s+=`<path d="M46 92 Q30 120 13 151 Q60 166 107 151 Q90 120 74 92 Z" fill="${dress}"/>`;
+ s+=`<path d="M13 151 q8 -9 15.7 0 q8 -9 15.7 0 q8 -9 15.7 0 q8 -9 15.7 0 q8 -9 15.7 0 q8 -9 15.5 0 Q60 168 13 151Z" fill="#fff" opacity=".8"/>`;
+ s+=`<path d="M40 112 Q60 122 80 112" stroke="#fff" stroke-width="2" fill="none" opacity=".7"/><g fill="#fff"><path d="${star(38,130,3,1.2)}"/><path d="${star(62,124,2.6,1)}"/><path d="${star(82,136,3,1.2)}"/><path d="${star(52,144,2.4,1)}"/><path d="${star(72,106,2.2,.9)}"/></g>`;
+ s+=`<path d="M46 70 Q60 66 74 70 L76 95 Q60 100 44 95 Z" fill="${P.rainbow?'#ff9ecf':P.d}"/><path d="M44 95 Q60 100 76 95" stroke="${P.gem}" stroke-width="3" fill="none"/>`;
+ s+=`<path d="M46 75 Q36 88 40 102" stroke="${arm}" stroke-width="7" stroke-linecap="round" fill="none"/><path d="M74 75 Q88 75 94 60" stroke="${arm}" stroke-width="7" stroke-linecap="round" fill="none"/>`;
+ s+=`<circle cx="45" cy="73" r="7.5" fill="${P.d2}" stroke="${P.rainbow?'#ffb6dd':P.d}" stroke-width="1.5"/><circle cx="75" cy="73" r="7.5" fill="${P.d2}" stroke="${P.rainbow?'#ffb6dd':P.d}" stroke-width="1.5"/>`;
+ s+=`<line x1="94" y1="62" x2="103" y2="33" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="${star(104,27,rank>=2?11:9,rank>=2?4.6:3.8)}" fill="url(#${id}g)" stroke="#fff" stroke-width="1.3"/>`;
+ s+=`<rect x="55" y="60" width="10" height="10" fill="${skin}"/>`;
+ if(rank>=1)s+=`<path d="M51 67 Q60 76 69 67" stroke="url(#${id}g)" stroke-width="2.2" fill="none"/><circle cx="60" cy="73" r="2.8" fill="${P.gem}" stroke="#fff"/>`;
+ s+=`<circle cx="36" cy="62" r="6.5" fill="${P.h}"/><circle cx="84" cy="62" r="6.5" fill="${P.h}"/><circle cx="35" cy="74" r="5.5" fill="${P.h}"/><circle cx="85" cy="74" r="5.5" fill="${P.h}"/>`;
+ s+=`<circle cx="60" cy="44" r="21" fill="${skin}"/>`;
+ s+=`<ellipse cx="52" cy="47" rx="3.6" ry="4.7" fill="#3b2550"/><ellipse cx="68" cy="47" rx="3.6" ry="4.7" fill="#3b2550"/><circle cx="53.3" cy="45.2" r="1.4" fill="#fff"/><circle cx="69.3" cy="45.2" r="1.4" fill="#fff"/><circle cx="51.2" cy="48.8" r=".7" fill="#fff"/><circle cx="67.2" cy="48.8" r=".7" fill="#fff"/>`;
+ s+=`<path d="M48.5 43 l-2.4 -2 M50.5 42 l-1.2 -2.6 M71.5 43 l2.4 -2 M69.5 42 l1.2 -2.6" stroke="#3b2550" stroke-width="1.2" stroke-linecap="round"/>`;
+ s+=`<ellipse cx="46.5" cy="53.5" rx="4" ry="2.6" fill="#ff8fb1" opacity=".55"/><ellipse cx="73.5" cy="53.5" rx="4" ry="2.6" fill="#ff8fb1" opacity=".55"/><path d="M55 55.5 Q60 60.5 65 55.5" stroke="#d94f70" stroke-width="2" fill="#ff9fb5" stroke-linecap="round"/>`;
+ s+=`<path d="M38 47 Q35 21 60 20.5 Q85 21 82 47 Q77 33 68 34 Q62 27 56 34 Q46 32 38 47Z" fill="${P.h}"/><path d="M45 28 Q53 23 61 24" stroke="${P.h2}" stroke-width="2.6" fill="none" stroke-linecap="round"/>`;
+ if(rank>=2)s+=`<path d="M43 25 L45 7 L52.5 16 L60 3 L67.5 16 L75 7 L77 25 Z" fill="url(#${id}g)" stroke="#e09a00" stroke-width="1"/><rect x="43" y="22" width="34" height="4" rx="2" fill="#ffcf40"/><circle cx="60" cy="15" r="3" fill="${P.gem}" stroke="#fff"/><circle cx="50" cy="19" r="2" fill="#7ee8fa"/><circle cx="70" cy="19" r="2" fill="#7ee8fa"/><circle cx="45" cy="7" r="1.6" fill="#fff"/><circle cx="60" cy="3" r="1.6" fill="#fff"/><circle cx="75" cy="7" r="1.6" fill="#fff"/>`;
+ else s+=`<path d="M48 25 L52 16 L56 21.5 L60 11 L64 21.5 L68 16 L72 25 Z" fill="url(#${id}g)" stroke="#e09a00" stroke-width=".8"/><circle cx="60" cy="18.5" r="2.2" fill="${P.gem}"/>`;
+ s+=`<text x="60" y="89" text-anchor="middle" font-size="11">${P.icon}</text>`;
+ if(rank>=4)s+=`<g fill="#fff"><path d="${star(14,40,4,1.5)}"/><path d="${star(108,96,3.4,1.3)}"/><path d="${star(20,128,3,1.2)}"/></g>`;
+ return `<svg class="princess" viewBox="0 0 120 165" width="${w}" height="${Math.round(w*1.375)}"><defs>${defs}</defs>${s}</svg>`;
+}
+function heroHTML(w=120){const pet=S.pet!=null?`<span class="pet">${SHOP[S.pet].e}</span>`:'';const acc=S.wear.length?`<span class="acc">${S.wear.map(i=>`<span>${SHOP[i].e}</span>`).join('')}</span>`:'';return `<span class="pwrap">${princessSVG(S.pi,rankIdx(),w)}${pet}${acc}</span>`;}
+
+/* ===================== 存檔 ===================== */
+const SAVE_KEY='tangtang_princess_v1';
+function defaultSave(){return {name:'棠棠',pi:null,xp:0,gems:20,stars:{},stickers:[],owned:[],wear:[],pet:null,wrong:{},speakBest:{},lastChest:'',rankShown:0,story:false,set:{rate:.8,zh:true,all:false}};}
+function load(){try{const t=localStorage.getItem(SAVE_KEY);if(t){const o=JSON.parse(t),d=defaultSave();return Object.assign(d,o,{set:Object.assign(d.set,o.set||{})});}}catch(e){}return defaultSave();}
+function save(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(S));}catch(e){}}
+let S=load();
+const level=()=>Math.floor(S.xp/100)+1;
+function rankIdx(){const l=level();let r=0;RANKS.forEach((x,i)=>{if(l>=x[0])r=i;});return r;}
+const totalStars=()=>Object.values(S.stars).reduce((a,b)=>a+b,0);
+const unlocked=i=>S.set.all||i===0||(S.stars[i-1]||0)>0;
+
+/* ===================== 商店 ===================== */
+const SHOP=[
+{e:'🦋',n:'蝴蝶精靈',p:20,pet:1,d:'寵物：打怪時可以幫忙刪掉錯的答案'},
+{e:'🐰',n:'小白兔',p:30,pet:1,d:'寵物：打怪時可以幫忙刪掉錯的答案'},
+{e:'🐱',n:'小貓咪',p:30,pet:1,d:'寵物：打怪時可以幫忙刪掉錯的答案'},
+{e:'🦢',n:'天鵝',p:45,pet:1,d:'寵物：打怪時可以幫忙刪掉錯的答案'},
+{e:'🦄',n:'獨角獸',p:70,pet:1,d:'寵物：打怪時可以幫忙 3 次喔！'},
+{e:'🐲',n:'小飛龍',p:90,pet:1,d:'寵物：打怪時可以幫忙 3 次喔！'},
+{e:'🧁',n:'杯子蛋糕',p:10,d:'可愛配件'},
+{e:'🎀',n:'蝴蝶結',p:15,d:'可愛配件'},
+{e:'🌹',n:'玫瑰花',p:20,d:'可愛配件'},
+{e:'💍',n:'寶石戒指',p:30,d:'閃亮配件'},
+{e:'👠',n:'玻璃鞋',p:40,d:'閃亮配件'},
+{e:'🪞',n:'魔法鏡子',p:50,d:'閃亮配件'}];
+const petUses=()=>S.pet==null?0:(SHOP[S.pet].p>=70?3:2);
+
+/* ===================== 畫面共用 ===================== */
+let VIEW='map';
+function topbar(){const l=level(),p=S.xp%100;return `<div class="top"><div class="av">${princessSVG(S.pi,rankIdx(),44)}</div><div class="who"><div class="nm">${S.name}公主 <span style="font-size:14px">Lv.${l}</span></div><div class="rk">${RANKS[rankIdx()][1]}</div><div class="xpbar"><i style="width:${p}%"></i></div></div><span class="chip">💎 ${S.gems}</span><span class="chip">⭐ ${totalStars()}</span></div>`;}
+function nav(on){const it=[['map','🗺️','地圖'],['shop','👗','衣帽間'],['dex','📖','貼紙簿'],['mirror','🪞','魔鏡複習'],['parent','⚙️','家長']];return `<div class="nav">${it.map(([k,i,t])=>`<button class="${on===k?'on':''}" onclick="go('${k}')"><b>${i}</b>${t}</button>`).join('')}</div>`;}
+function go(k){hush();stopRec();B=null;if(k==='map')renderMap();else if(k==='shop')renderShop();else if(k==='dex')renderDex();else if(k==='mirror')renderMirror();else if(k==='parent')renderParent();window.scrollTo(0,0);}
+function modal(html){const m=document.createElement('div');m.className='modal';m.innerHTML=`<div class="mbox">${html}</div>`;document.body.appendChild(m);return m;}
+function closeModal(){document.querySelectorAll('.modal').forEach(m=>m.remove());}
+
+/* ===================== 開始畫面 ===================== */
+let pickP=null;
+function renderStart(){VIEW='start';pickP=pickP??S.pi;
+ $('#app').innerHTML=`<div class="title">✨ 英文公主王國 ✨</div><div class="sub">Princess English Kingdom</div>
+ <div class="glass center"><h3>👑 你的名字</h3><input class="name" id="nm" maxlength="8" value="${S.name}"><div class="tip" style="margin-top:6px">會變成「${S.name}公主」</div></div>
+ <div class="glass"><h3 class="center">💖 選一位公主</h3><div class="pcards">${PR.map((p,i)=>`<button class="pcard ${pickP===i?'on':''}" onclick="selP(${i})">${princessSVG(i,pickP===i?2:0,96)}<div>${p.icon} ${p.name}</div></button>`).join('')}</div></div>
+ <div class="center" style="margin:16px 0"><button class="btn big gold" onclick="startGame()">🏰 出發冒險！</button></div>`;}
+function selP(i){const v=$('#nm').value;pickP=i;renderStart();$('#nm').value=v;sfx('pop');sayZhEn(PR[i].name,PR[i].cheer);}
+function startGame(){if(pickP==null){toast('先選一位公主喔！💖');sayZh('先選一位公主喔');return;}const v=$('#nm').value.trim();S.name=v||'棠棠';S.pi=pickP;save();sfx('win');renderMap();
+ if(!S.story){S.story=true;save();setTimeout(story,300);}}
+function story(){const t=`壞巫婆把九個王國的英文魔法偷走了！${S.name}公主，用英文魔法打敗怪獸，把王國救回來吧！`;
+ modal(`<div style="font-size:60px">🧙‍♀️💨🏰</div><h2>公主，請救救王國！</h2><p style="font-size:18px;font-weight:700;line-height:1.6">${t}</p><p class="tip">答對題目＝施放魔法 ✨　答錯也沒關係，會教你正確答案！</p><button class="btn gold" onclick="closeModal();hush()">我準備好了！</button>`);sayZh(t);}
+
+/* ===================== 地圖 ===================== */
+function renderMap(){VIEW='map';
+ let nextI=KD.findIndex((k,i)=>unlocked(i)&&!(S.stars[i]>0));
+ const lines=['我們一起去打敗壞巫婆吧！','今天要練習哪個王國呢？','答對越多，公主會越來越漂亮喔！','衣帽間有可愛的寵物喔！','魔鏡可以複習答錯的單字！'];
+ const chest=S.lastChest!==today();
+ let m='';KD.forEach((k,i)=>{const lk=!unlocked(i),st=S.stars[i]||0;const side=i%3===0?'c':(i%3===1?'l':'r');
+  m+=`<div class="isle-row ${side}"><button class="isle ${lk?'lock':''} ${i===nextI?'next':''}" onclick="openK(${i})"><div class="orb" style="background:${k.bg}"><span>${k.icon}</span>${lk?'<div class="lockic">🔒</div>':''}</div><div class="nm">${i+1}. ${k.name}</div><div class="st">${'⭐'.repeat(st)}${'☆'.repeat(3-st)}</div></button></div>`;
+  if(i<KD.length-1)m+=`<div class="path">✦ ✧ ✦</div>`;});
+ $('#app').innerHTML=topbar()+`<div class="glass banner">${heroHTML(110)}<div><div class="bubble">${rnd(lines)}</div>${chest?`<div style="margin-top:10px"><button class="btn gold sm" onclick="openChest()">🎁 每日魔法寶箱</button></div>`:''}</div></div>
+ <div class="title" style="font-size:32px">🗺️ 魔法王國地圖</div><div class="map">${m}</div>
+ <div class="glass center"><div style="font-size:54px">🏯</div><b>救回全部 9 個王國，打敗壞巫婆！</b></div>`+nav('map');
+ checkPromo();}
+function openChest(){if(S.lastChest===today())return;S.lastChest=today();S.gems+=15;save();sfx('win');confetti(24);modal(`<div style="font-size:80px">🎁</div><h2>每日魔法寶箱</h2><p style="font-size:22px;font-weight:900">得到 💎 15 顆寶石！</p><p class="tip">明天再來開一次吧！</p><button class="btn" onclick="closeModal();renderMap()">耶！</button>`);sayZhEn('得到十五顆寶石！','Wonderful!');}
+
+/* ===================== 王國畫面 ===================== */
+let CUR=0;
+function openK(i){if(!unlocked(i)){toast('🔒 先打敗上一個王國的魔王才能進來喔！');sayZh('先打敗上一個王國的魔王，才能進來喔');sfx('bad');return;}CUR=i;renderK();}
+function renderK(){VIEW='k';const K=KD[CUR],st=S.stars[CUR]||0;hush();
+ $('#app').innerHTML=topbar()+`<div class="kban" style="background:${K.bg};margin-top:12px"><div class="ic">${K.icon}</div><h2>${K.name}</h2><div class="en">${K.en}　${'⭐'.repeat(st)}${'☆'.repeat(3-st)}</div></div>
+ <div class="modes"><button class="mode m1" onclick="startBattle(${CUR})"><b>⚔️</b>打怪救王國<small>魔王：${K.boss[0]} ${K.boss[1]}</small></button>
+ <button class="mode m2" onclick="startCards(${CUR})"><b>🃏</b>魔法單字卡<small>翻卡片聽發音</small></button>
+ <button class="mode m3" onclick="startSpeak(${CUR})"><b>🎤</b>念咒語練習<small>對麥克風說英文</small></button></div>
+ <div class="glass"><h3>🎁 單字寶盒（點一下聽發音）</h3><div class="wgrid">${K.words.map((w,j)=>`<div class="wcell" onclick="sayW(${j})"><div class="opic">${pic(w[2])}</div><div class="e">${CUR===8?w[3]+w[3].toLowerCase()+' · ':''}${w[0]}</div><div class="z">${w[1]}</div></div>`).join('')}</div></div>
+ <div class="center"><button class="btn ghost" onclick="go('map')">⬅ 回地圖</button></div>`+nav('map');}
+function sayW(j){const w=KD[CUR].words[j];sfx('pop');if(CUR===8)say(`${w[3]}. ${w[0]}`);else say(w[0]);}
+
+/* ===================== 題目產生器 ===================== */
+const SPEAKBTN='<button class="bigspeak" onclick="replayQ()">🔊</button>';
+function others(arr,t,n){return pickN(arr.filter(x=>x[0]!==t[0]),n);}
+const GEN={};
+GEN.listen=(K,forced)=>{let pool=K.groups?(forced?(K.groups.find(g=>g.some(x=>x[0]===forced[0]))||K.words):rnd(K.groups)):K.words;const t=forced||rnd(pool);const os=shuffle([t,...others(pool,t,Math.min(3,pool.length-1))]);
+ return {kind:'listen',zh:'聽聽看，是哪一個？',say:t[0],center:SPEAKBTN,layout:'pics',opts:os.map(o=>({html:pic(o[2]),label:o[0],val:o[0],sayIt:o[0]})),ans:t[0],after:t[0],w:t};};
+GEN.look=K=>{const pool=K.groups?rnd(K.groups):K.words;const t=rnd(pool);const os=shuffle([t,...others(pool,t,2)]);const q=K.lookEn||'What is this?';
+ return {kind:'look',zh:'這是什麼？選出正確的英文',say:q,en:q,center:pic(t[2]),layout:'words',opts:os.map(o=>({html:o[0],val:o[0],sayIt:o[0]})),ans:t[0],after:t[0],w:t};};
+GEN.whatIs=K=>{const t=rnd(K.words),s=w=>`This is ${art(w[0])} ${w[0]}.`;const os=shuffle([t,...others(K.words,t,2)]);
+ return {kind:'whatIs',zh:'這是什麼？選出正確的句子',say:'What is this?',en:'What is this?',center:pic(t[2]),layout:'words',opts:os.map(o=>({html:s(o),val:o[0],sayIt:s(o)})),ans:t[0],after:s(t),w:t};};
+GEN.isYour=K=>{const t=rnd(K.words),yes=Math.random()<.5,a=yes?t:rnd(others(K.words,t,1));const q=`Is this your ${a[0]}?`,Y=`Yes, it is my ${a[0]}.`,N=`No, it is not my ${a[0]}.`;
+ return {kind:'isYour',zh:'這是你的嗎？看圖回答',say:q,en:q,center:pic(t[2]),layout:'words',opts:[{html:'⭕ '+Y,val:'y',sayIt:Y},{html:'❌ '+N,val:'n',sayIt:N}],ans:yes?'y':'n',after:yes?Y:N,w:t};};
+GEN.colorQ=K=>{const c=rnd(COLORS),obj=rnd(COLOR_OBJ[c[0]]),s=x=>`It is ${x[0]}.`;const os=shuffle([c,...others(COLORS,c,2)]);
+ return {kind:'colorQ',zh:'它是什麼顏色？',say:'What color is it?',en:'What color is it?',center:pic(obj),layout:'words',opts:os.map(o=>({html:`<span><span class="dot" style="background:${o[2].slice(4)}"></span>${s(o)}</span>`,val:o[0],sayIt:s(o)})),ans:c[0],after:s(c),w:c};};
+GEN.pluralPic=K=>{const t=rnd(K.words),pl=Math.random()<.5,one=`a ${t[0]}`,two=t[3];
+ return {kind:'pluralPic',zh:'一個還是很多個？聽聽看',say:pl?two:one,center:SPEAKBTN,layout:'pics',opts:shuffle([{html:pic(t[2]),label:one,val:'1',sayIt:one},{html:pic('x2:'+t[2]),label:two,val:'2',sayIt:two}]),ans:pl?'2':'1',after:pl?two:one,w:t};};
+GEN.pluralSent=K=>{const t=rnd(K.words),pl=Math.random()<.5,A=`It is a ${t[0]}.`,Bs=`They are ${t[3]}.`;
+ return {kind:'pluralSent',zh:'看圖選句子：一個還是很多個？',say:'',center:pic(pl?'x2:'+t[2]:t[2]),layout:'words',opts:shuffle([{html:'1️⃣ '+A,val:'1',sayIt:A},{html:'🔢 '+Bs,val:'2',sayIt:Bs}]),ans:pl?'2':'1',after:pl?Bs:A,w:t};};
+GEN.whatAre=K=>{const t=rnd(K.words),s=x=>`They are ${x[0]}.`;const os=shuffle([t,...others(K.words,t,2)]);
+ return {kind:'whatAre',zh:'牠們是什麼？選出正確的句子',say:'What are they?',en:'What are they?',center:pic(t[2]),layout:'words',opts:os.map(o=>({html:s(o),val:o[0],sayIt:s(o)})),ans:t[0],after:s(t),w:t};};
+GEN.areThey=K=>{const t=rnd(K.words),yes=Math.random()<.5,a=yes?t:rnd(others(K.words,t,1));const q=`Are they ${a[0]}?`,Y='Yes, they are.',N='No, they are not.';
+ return {kind:'areThey',zh:'看圖回答：是還是不是？',say:q,en:q,center:pic(t[2]),layout:'words',opts:[{html:'⭕ '+Y,val:'y',sayIt:Y},{html:'❌ '+N,val:'n',sayIt:N}],ans:yes?'y':'n',after:yes?`Yes, they are ${t[0]}.`:`No, they are not ${a[0]}. They are ${t[0]}.`,w:t};};
+GEN.adjFill=K=>{const s=rnd(ADJ_SENT),full=s[1].replace('___',s[2]);const os=shuffle([s[2],s[3]]);
+ return {kind:'adjFill',zh:'選出正確的字',say:s[1].replace(' ___.','...'),en:s[1],center:pic(s[0]),layout:'words',opts:os.map(o=>({html:o,val:o,sayIt:o})),ans:s[2],after:full,w:ADJ.find(a=>a[0]===s[2])};};
+GEN.adjYN=K=>{const r=rnd(ADJ_YN),q=`Are ${r[1]} ${r[2]}?`,Y=`Yes, they are ${r[2]}.`,N=`No, they are not ${r[2]}.`;
+ return {kind:'adjYN',zh:'看圖回答：是還是不是？',say:cap(q),en:cap(q),center:pic(r[0]),layout:'words',opts:[{html:'⭕ '+Y,val:'y',sayIt:Y},{html:'❌ '+N,val:'n',sayIt:N}],ans:r[3]?'y':'n',after:r[3]?Y:N,w:ADJ.find(a=>a[0]===r[2])};};
+GEN.qaWeather=K=>{const w=rnd(WEATHER),s=x=>`It is ${x[0]}.`;const os=shuffle([w,...others(WEATHER,w,2)]);
+ return {kind:'qaW',zh:'今天天氣怎麼樣？',say:'How is the weather today?',en:'How is the weather today?',center:pic(w[2]),layout:'words',opts:os.map(o=>({html:s(o),val:o[0],sayIt:s(o)})),ans:w[0],after:s(w),w};};
+GEN.qaFeel=K=>{const F=FEEL.slice(0,3),f=rnd(F),s=x=>`I feel ${x[0]}.`;const os=shuffle([f,...others(F,f,2)]);
+ return {kind:'qaF',zh:'你今天感覺怎麼樣？',say:'How do you feel today?',en:'How do you feel today?',center:pic(f[2]),layout:'words',opts:os.map(o=>({html:s(o),val:o[0],sayIt:s(o)})),ans:f[0],after:s(f),w:f};};
+GEN.qaDay=K=>{const d=rnd(DAYS),s=x=>`Today is ${x[0]}.`;const os=shuffle([d,...others(DAYS,d,2)]);
+ return {kind:'qaD',zh:'今天星期幾？',say:'What day is today?',en:'What day is today?',center:pic(d[2]),layout:'words',opts:os.map(o=>({html:s(o),val:o[0],sayIt:s(o)})),ans:d[0],after:s(d),w:d};};
+GEN.qaFixed=K=>{const f=rnd(FIXED);const os=shuffle([f,...pickN(FIXED.filter(x=>x!==f),2)]);
+ return {kind:'qaX',zh:'聽問題，選出正確的回答',say:f[0],en:f[0],center:E('💬'),layout:'words',opts:os.map(o=>({html:o[1],val:o[1],sayIt:o[1]})),ans:f[1],after:f[0]+' '+f[1]};};
+GEN.qaYest=K=>{const i=Math.random()*7|0,y=Math.random()<.5,j=(i+(y?6:1))%7,k=(i+(y?1:6))%7;const others3=[j,k,(i+3)%7];const q=`Today is ${DAYS[i][0]}. ${y?'Yesterday was':'Tomorrow will be'}...?`;
+ return {kind:'qaY',zh:y?'今天是'+DAYS[i][1]+'，昨天是星期幾？':'今天是'+DAYS[i][1]+'，明天是星期幾？',say:q,en:q.replace('...?',' ___ ?'),center:pic(DAYS[i][2]),layout:'words',opts:shuffle(others3).map(n=>({html:`${DAYS[n][0]} <small style="color:#a05b9c">${DAYS[n][1]}</small>`,val:DAYS[n][0],sayIt:DAYS[n][0]})),ans:DAYS[j][0],after:`${y?'Yesterday was':'Tomorrow will be'} ${DAYS[j][0]}.`,w:DAYS[j]};};
+function numEntry(n){return [numWord(n),'數字 '+n,'num:'+n];}
+GEN.listenNum=K=>{const n=1+(Math.random()*50|0);const set=new Set();const tricky={13:30,14:40,15:50,30:13,40:14,50:15,12:20,20:12,16:60,17:70};
+ if(tricky[n]&&tricky[n]<=50)set.add(tricky[n]);[n+1,n-1,n+10,n-10,n+2].forEach(x=>{if(set.size<3&&x>=1&&x<=50&&x!==n)set.add(x);});
+ const os=shuffle([n,...[...set].slice(0,3)]);return {kind:'num',zh:'聽聽看，是哪個數字？',say:String(n),center:SPEAKBTN,layout:'pics',opts:os.map(o=>({html:pic('num:'+o),label:numWord(o),val:String(o),sayIt:String(o)})),ans:String(n),after:String(n),w:numEntry(n)};};
+GEN.countQ=K=>{const n=2+(Math.random()*11|0),e=rnd(['⭐','🌸','💎','🍓','🦋','🧁','👑']);const set=new Set([n]);while(set.size<4){const x=n+rnd([-2,-1,1,2,3]);if(x>=1)set.add(x);}
+ return {kind:'count',zh:'數數看，有幾個？',say:'How many?',en:'How many?',center:`<div class="countbox">${[...Array(n)].map(()=>E(e)).join('')}</div>`,layout:'pics',opts:shuffle([...set]).map(o=>({html:pic('num:'+o),label:numWord(o),val:String(o),sayIt:String(o)})),ans:String(n),after:String(n),w:numEntry(n)};};
+GEN.seqQ=K=>{const a=1+(Math.random()*46|0),n=a+2;const set=new Set([n]);[n+1,n+10,n-3,n+2].forEach(x=>{if(set.size<4&&x>=1)set.add(x);});
+ return {kind:'seq',zh:'接下來是哪個數字？',say:`${a}, ${a+1}, and...?`,center:`<div class="seq"><span>${a}</span><span>${a+1}</span><span class="qm">?</span></div>`,layout:'pics',opts:shuffle([...set]).map(o=>({html:pic('num:'+o),label:numWord(o),val:String(o),sayIt:String(o)})),ans:String(n),after:`${a}, ${a+1}, ${n}`,w:numEntry(n)};};
+GEN.startQ=K=>{const t=rnd(PHON);const os=shuffle([t,...pickN(PHON.filter(p=>p[0]!==t[0]),3)]);
+ return {kind:'start',zh:`哪一個是 ${t[0]} 開頭的？`,say:`Which one starts with ${t[0]}?`,center:`<span class="bigletter">${t[0]}${t[0].toLowerCase()}</span>`,layout:'pics',opts:os.map(o=>({html:pic(o[3]),label:o[1],val:o[0],sayIt:o[1]})),ans:t[0],after:`${t[0]}, ${t[1]}`,w:PHONW.find(x=>x[0]===t[1])};};
+GEN.firstQ=K=>{const t=rnd(PHON);const os=shuffle([t,...pickN(PHON.filter(p=>p[0]!==t[0]),3)]);
+ return {kind:'first',zh:'它是哪個字母開頭的？',say:t[1],center:pic(t[3]),layout:'pics',opts:os.map(o=>({html:`<span class="letopt">${o[0]}${o[0].toLowerCase()}</span>`,label:'',val:o[0],sayIt:o[0]})),ans:t[0],after:`${t[1]}. ${t[0]}, ${t[1]}.`,w:PHONW.find(x=>x[0]===t[1])};};
+
+/* ===================== 打怪 ===================== */
+let B=null;
+function makeMons(ki){const K=KD[ki];return [...K.mons.map((m,i)=>({e:m[0],n:m[1],hp:3,max:3,id:ki+'-'+i})),{e:K.boss[0],n:K.boss[1],hp:4,max:4,boss:1,id:ki+'-b'}];}
+function startBattle(ki){hush();B={ki,review:false,mons:makeMons(ki),mi:0,hearts:5,miss:0,gems:0,combo:0,lastKind:'',recent:[],pet:petUses(),lock:false};renderBattle();setTimeout(()=>{sayZh(`${KD[ki].mons[0][1]}出現了！`);setTimeout(nextQ,1200);},200);}
+function renderBattle(){VIEW='battle';const K=B.review?{bg:'linear-gradient(160deg,#e6d6ff,#ffd6ec)',name:'魔鏡複習'}:KD[B.ki];
+ $('#app').innerHTML=`<div class="battle" style="background:${K.bg}">
+ <div class="bhead"><button class="btn ghost sm" onclick="quitBattle()">🏳️ 撤退</button><span class="chip">${K.name}　${B.review?'':`第 ${B.mi+1}/3 隻`}</span><span class="chip" id="bg">💎 +${B.gems}</span></div>
+ <div class="stage" id="stage"><div class="side"><div class="hearts" id="hearts"></div><div class="hero" id="hero">${heroHTML(92)}</div></div><div class="vs">VS</div>
+ <div class="side"><div class="mname" id="mname"></div><div class="hp"><i id="hpi"></i></div><div style="position:relative;display:flex;justify-content:center"><div class="mon enter" id="mon"></div></div></div></div>
+ <div id="q"></div><div class="bfoot" id="bfoot"></div></div>`;
+ drawStage();}
+function drawStage(){const m=B.mons[B.mi];$('#hearts').textContent='💖'.repeat(B.hearts)+'🤍'.repeat(5-B.hearts);$('#mname').textContent=(m.boss?'👑 魔王 ':'')+m.n;$('#hpi').style.width=(m.hp/m.max*100)+'%';const mon=$('#mon');mon.textContent=m.e;mon.className='mon enter'+(m.boss?' boss':'');$('#bg').textContent='💎 +'+B.gems;drawFoot();}
+function drawFoot(){const f=$('#bfoot');if(!f)return;f.innerHTML=S.pet!=null?`<button class="btn mint sm" onclick="petHelp()" ${B.pet>0?'':'disabled'}>${SHOP[S.pet].e} 寵物幫忙（${B.pet}）</button>`:`<span class="tip">💡 到「衣帽間」買寵物，打怪時可以幫忙喔！</span>`;}
+function nextQ(){if(!B)return;let q;
+ if(B.review)q=reviewQ();else{const K=KD[B.ki];for(let t=0;t<8;t++){q=GEN[rnd(K.gens)](K);if(!B.recent.includes(q.after))break;}}
+ B.recent.push(q.after);if(B.recent.length>4)B.recent.shift();B.q=q;B.lock=false;
+ $('#q').innerHTML=`<div class="qcard" id="qc">${qHTML(q)}</div>`;
+ if(q.kind!==B.lastKind)sayZhEn(q.zh,q.say);else say(q.say);B.lastKind=q.kind;}
+function qHTML(q){const opts=q.opts.map((o,i)=>q.layout==='pics'?`<button class="opt pics" id="o${i}" onclick="ans(${i})"><div class="opic">${o.html}</div><div class="olab">${o.label||''}</div></button>`
+ :`<button class="opt words" id="o${i}" onclick="ans(${i})"><span>${o.html}</span><span class="osay" onclick="event.stopPropagation();sayOpt(${i})">🔊</span></button>`).join('');
+ return `<div class="qzh"><span>${q.zh}</span><button class="replay" onclick="replayQ()">🔊 再聽一次</button></div><div class="qcenter">${q.center||''}</div>${q.en?`<div class="qen">${q.en}</div>`:''}<div class="opts ${q.layout} n${q.opts.length}">${opts}</div>`;}
+function replayQ(){const q=(B&&B.q);if(!q)return;if(q.say)say(q.say);else sayZh(q.zh);}
+function sayOpt(i){if(B&&B.q)say(B.q.opts[i].sayIt);}
+const PRAISE=[['Great!','好棒！'],['Wonderful!','太厲害了！'],['Super!','超級棒！'],['Amazing!','好神奇！'],['Good job!','做得好！'],['Perfect!','完美！']];
+function ans(i){if(!B||B.lock)return;B.lock=true;const q=B.q,ok=q.opts[i].val===q.ans,ci=q.opts.findIndex(o=>o.val===q.ans);$('#qc').classList.add('done');
+ if(ok){$('#o'+i).classList.add('right');B.combo++;S.xp+=10;S.gems+=2;B.gems+=2;if(B.combo>0&&B.combo%3===0){S.gems+=3;B.gems+=3;}sfx('magic');cast();hush();utter(q.after,'en');utter(rnd(PRAISE)[0],'en');if(B.review)unwrong(q);}
+ else{$('#o'+i).classList.add('wrong');$('#o'+ci).classList.add('right');B.combo=0;B.miss++;B.hearts--;sfx('bad');monAttack();logWrong(q);hush();if(S.set.zh)utter('沒關係，答案是','zh');utter(q.after,'en');}
+ save();$('#bg').textContent='💎 +'+B.gems;
+ setTimeout(afterAns,ok?1900:3000);}
+function cast(){const st=$('#stage');const hero=$('#hero');hero.classList.remove('cast');void hero.offsetWidth;hero.classList.add('cast');
+ const mg=document.createElement('div');mg.className='magic';mg.textContent=B.combo>=3?'🌟':rnd(['✨','💖','⭐','🌸']);st.appendChild(mg);
+ setTimeout(()=>{mg.remove();const m=B.mons[B.mi];const dmg=B.combo>=3&&m.hp>1?2:1;m.hp=Math.max(0,m.hp-dmg);$('#hpi').style.width=(m.hp/m.max*100)+'%';const mon=$('#mon');mon.className='mon'+(m.boss?' boss':'');void mon.offsetWidth;mon.classList.add('hit');
+  const bm=document.createElement('div');bm.className='boom';bm.textContent='💥';st.appendChild(bm);const d=document.createElement('div');d.className='dmg';d.textContent=dmg>1?'-2 超級魔法!':'-1';st.appendChild(d);
+  if(B.combo>=3){const c=document.createElement('div');c.className='combo';c.textContent=`🔥 ${B.combo} 連擊！`;st.appendChild(c);setTimeout(()=>c.remove(),1200);}
+  setTimeout(()=>{bm.remove();d.remove();},1000);},480);}
+function monAttack(){const mon=$('#mon'),m=B.mons[B.mi];mon.className='mon'+(m.boss?' boss':'');void mon.offsetWidth;mon.classList.add('lunge');setTimeout(()=>{const h=$('#hero');if(!h)return;h.classList.remove('hurt');void h.offsetWidth;h.classList.add('hurt');$('#hearts').textContent='💖'.repeat(Math.max(0,B.hearts))+'🤍'.repeat(5-Math.max(0,B.hearts));},250);}
+function afterAns(){if(!B)return;const m=B.mons[B.mi];
+ if(m.hp<=0){const mon=$('#mon');mon.className='mon poof'+(m.boss?' boss':'');sfx('gem');if(!B.review&&!S.stickers.includes(m.id)){S.stickers.push(m.id);save();toast(`🎉 打敗了${m.n}！得到「${m.e}」貼紙！`);}else toast(`🎉 打敗了${m.n}！`);
+  setTimeout(()=>{if(!B)return;if(B.mi<B.mons.length-1){B.mi++;drawStage();const nm=B.mons[B.mi];if(nm.boss){sfx('boss');sayZh(`魔王${nm.n}出現了！`);}else sayZh(`${nm.n}出現了！`);B.lastKind='';setTimeout(nextQ,1300);}else endBattle(true);},900);return;}
+ if(B.hearts<=0){endBattle(false);return;}
+ nextQ();}
+function petHelp(){if(!B||B.lock||B.pet<=0)return;const q=B.q;const wrongIdx=q.opts.map((o,i)=>i).filter(i=>q.opts[i].val!==q.ans&&!$('#o'+i).classList.contains('gone'));if(!wrongIdx.length)return;
+ const rm=pickN(wrongIdx,Math.min(wrongIdx.length,q.opts.length>2?2:1));if(q.opts.length===2&&wrongIdx.length===1){}
+ rm.forEach(i=>$('#o'+i).classList.add('gone'));B.pet--;drawFoot();sfx('gem');toast(`${SHOP[S.pet].e} 寵物幫你把錯的答案變不見了！`);}
+function endBattle(win){const b=B;B=null;hush();
+ if(b.review){S.gems+=0;save();sfx('win');confetti(30);modal(`<div style="font-size:70px">🪞✨</div><h2>魔鏡複習完成！</h2><p style="font-size:20px;font-weight:700">這次賺到 💎 ${b.gems}</p><button class="btn" onclick="closeModal();go('mirror')">好的</button>`);sayZhEn('複習完成，好棒！','Great job!');return;}
+ if(win){const stars=b.miss<=1?3:b.miss<=3?2:1;const first=!(S.stars[b.ki]>0);let bonus=stars*5+(first?20:0);S.gems+=bonus;S.stars[b.ki]=Math.max(S.stars[b.ki]||0,stars);save();sfx('win');confetti(50);
+  const nextK=b.ki<KD.length-1?b.ki+1:null;const fin=b.ki===KD.length-1;
+  modal(`<div>${heroHTML(110)}</div><h2>${fin?'👑 打敗壞巫婆了！':'🎉 王國得救了！'}</h2><div class="stars3">${[0,1,2].map(i=>`<span style="animation-delay:${.2+i*.25}s">${i<stars?'⭐':'☆'}</span>`).join('')}</div>
+  <p style="font-size:19px;font-weight:700">答錯 ${b.miss} 題　💎 +${b.gems+bonus}${first?'<br>🎁 第一次通關獎勵 +20':''}</p>${fin?'<p style="font-weight:900;color:#d63f96">九個王國都恢復英文魔法了！你是最棒的公主！</p>':''}
+  <div class="row"><button class="btn ghost sm" onclick="closeModal();startBattle(${b.ki})">🔁 再玩一次</button>${nextK!=null?`<button class="btn gold sm" onclick="closeModal();openK(${nextK})">➡ 下一個王國</button>`:''}<button class="btn sm" onclick="closeModal();go('map')">🗺️ 地圖</button></div>`);
+  sayZhEn(fin?'你打敗壞巫婆了！你是最棒的公主！':'王國得救了！','You did it! Wonderful!');setTimeout(checkPromo,1500);}
+ else{save();sfx('bad');modal(`<div style="font-size:70px">💫</div><h2>魔力用完了！</h2><p style="font-size:19px;font-weight:700">沒關係，剛剛答錯的題目都會教你正確答案。<br>休息一下，再挑戰一次吧！</p><p>💎 這次還是賺到 ${b.gems} 顆寶石</p><div class="row"><button class="btn gold" onclick="closeModal();startBattle(${b.ki})">💪 再挑戰</button><button class="btn ghost" onclick="closeModal();startCards(${b.ki})">🃏 先練單字卡</button></div>`);sayZh('魔力用完了，沒關係，再挑戰一次吧！');}}
+function quitBattle(){if(confirm('確定要撤退嗎？寶石會帶走，但不會拿到星星喔。')){const b=B;B=null;hush();save();if(b&&b.review)go('mirror');else{CUR=b?b.ki:CUR;renderK();}}}
+function logWrong(q){if(!q.w)return;const ki=q.ki!=null?q.ki:B.ki;const k=q.w[0];const o=S.wrong[k]||{ki,n:0,zh:q.w[1],pic:q.w[2]};o.n++;S.wrong[k]=o;}
+function unwrong(q){if(!q.w)return;const o=S.wrong[q.w[0]];if(!o)return;o.n--;if(o.n<=0)delete S.wrong[q.w[0]];}
+function checkPromo(){const r=rankIdx();if(r>S.rankShown&&!document.querySelector('.modal')){S.rankShown=r;save();sfx('lv');confetti(60);
+ modal(`<div>${princessSVG(S.pi,r,150)}</div><h2>✨ 升級了！✨</h2><p style="font-size:22px;font-weight:900">${S.name}變成「${RANKS[r][1]}」了！</p><p class="tip">${['','得到閃亮項鍊！','得到黃金皇冠！','長出天使翅膀！','全身發出彩虹光芒！'][r]}</p><button class="btn gold" onclick="closeModal()">好漂亮！</button>`);sayZhEn(`恭喜！變成${RANKS[r][1]}了！`,'Congratulations!');}}
+
+/* ===================== 魔鏡複習 ===================== */
+function wrongList(){return Object.entries(S.wrong).sort((a,b)=>b[1].n-a[1].n);}
+function renderMirror(){VIEW='mirror';const L=wrongList();
+ $('#app').innerHTML=topbar()+`<div class="title" style="font-size:34px">🪞 魔鏡複習</div><div class="glass center">${L.length?`<p style="font-weight:700;font-size:18px">魔鏡記住了你答錯的 ${L.length} 個單字，打敗魔鏡怪就能把它們清掉！</p>
+ <div class="wgrid" style="margin:10px 0">${L.slice(0,24).map(([en,o])=>`<div class="wcell" onclick="say('${en.replace(/'/g,"\\'")}')"><div class="opic">${pic(o.pic)}</div><div class="e">${en}</div><div class="z">${o.zh}　錯 ${o.n} 次</div></div>`).join('')}</div>
+ <button class="btn big gold" onclick="startReview()">🪞 開始複習</button>`:`<div style="font-size:80px">🌟</div><p style="font-size:20px;font-weight:900">太棒了！現在沒有要複習的單字！</p><p class="tip">打怪時答錯的單字會自動跑到這裡</p>`}</div>`+nav('mirror');}
+function startReview(){const L=wrongList().slice(0,10);if(!L.length)return;hush();const hp=Math.min(8,Math.max(3,L.length));
+ B={review:true,list:L,ri:0,mons:[{e:'🪞',n:'魔鏡怪',hp,max:hp,boss:1,id:'mirror'}],mi:0,hearts:5,miss:0,gems:0,combo:0,lastKind:'',recent:[],pet:petUses(),lock:false,ki:null};renderBattle();setTimeout(()=>{sayZh('魔鏡怪出現了！');setTimeout(nextQ,1100);},200);}
+function reviewQ(){const [en,o]=B.list[B.ri%B.list.length];B.ri++;const K=KD[o.ki];const w=K.words.find(x=>x[0]===en)||[en,o.zh,o.pic];let q;
+ if(o.ki===8&&Math.random()<.5){const p=PHON.find(x=>x[1]===en);if(p){q=GEN.firstQ(K);}}
+ if(!q){const KK=K.words.some(x=>x[0]===en)?K:Object.assign({},K,{words:K.words.concat([w]),groups:null});q=GEN.listen(KK,w);}
+ q.ki=o.ki;return q;}
+
+/* ===================== 單字卡 ===================== */
+let C=null;
+function startCards(ki){hush();C={ki,list:shuffle(KD[ki].words),i:0,known:0,flip:false};renderCards();}
+function renderCards(){VIEW='cards';const K=KD[C.ki];if(C.i>=C.list.length){sfx('win');confetti(30);S.gems+=5;save();
+  $('#app').innerHTML=topbar()+`<div class="glass center"><div style="font-size:80px">🃏✨</div><h2 style="color:#d63f96">單字卡練完了！</h2><p style="font-size:20px;font-weight:700">會了 ${C.known} 張　💎 +5</p><div class="row"><button class="btn gold" onclick="startCards(${C.ki})">🔁 再練一次</button><button class="btn" onclick="startBattle(${C.ki})">⚔️ 去打怪</button><button class="btn ghost" onclick="openK(${C.ki})">⬅ 回王國</button></div></div>`+nav('map');sayZhEn('單字卡練完了！','Good job!');return;}
+ const w=C.list[C.i];const lead=C.ki===8?`${w[3]}${w[3].toLowerCase()} · `:'';
+ $('#app').innerHTML=topbar()+`<div class="center" style="margin-top:10px"><span class="chip">${K.icon} ${K.name}　${C.i+1} / ${C.list.length}</span></div>
+ <div class="flip ${C.flip?'on':''}" id="flip" onclick="flipCard()"><div class="in"><div class="face f"><div class="opic">${pic(w[2])}</div><div class="tip">👆 點卡片翻面</div></div>
+ <div class="face b"><div class="e">${lead}${w[0]}</div><div class="z">${w[1]}</div><div style="margin-top:14px;font-size:40px">✨</div></div></div></div>
+ <div class="row"><button class="btn ghost" onclick="cardSay()">🔊 再聽一次</button></div>
+ <div class="row" style="margin-top:12px"><button class="btn mint" onclick="cardAns(0)">🔁 再練習</button><button class="btn gold" onclick="cardAns(1)">💖 我會了</button></div>
+ <div class="center" style="margin-top:12px"><button class="btn ghost sm" onclick="openK(${C.ki})">⬅ 回王國</button></div>`+nav('map');
+ setTimeout(cardSay,250);}
+function cardSay(){const w=C.list[C.i];if(!w)return;if(C.ki===8)say(`${w[3]}. ${w[0]}`);else say(w[0]);}
+function flipCard(){C.flip=!C.flip;$('#flip').classList.toggle('on',C.flip);sfx('pop');if(C.flip){const w=C.list[C.i];hush();utter(w[0],'en');if(S.set.zh)utter(w[1],'zh');}else cardSay();}
+function cardAns(ok){const w=C.list[C.i];if(ok){C.known++;sfx('gem');}else{C.list.push(w);sfx('pop');}C.i++;C.flip=false;renderCards();}
+
+/* ===================== 念咒語（發音） ===================== */
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;let REC=null,K2=null;
+const NUMN={};ONES.forEach((w,i)=>NUMN[w]=String(i));TENS.forEach((w,i)=>{if(w)NUMN[w]=String(i*10);});NUMN['to']='2';NUMN['too']='2';NUMN['for']='4';NUMN['ate']='8';NUMN['won']='1';
+function normT(s){s=String(s).toLowerCase().replace(/[’`]/g,"'").replace(/-/g,' ');s=s.replace(/\bi'm\b/g,'i am').replace(/\bit's\b/g,'it is').replace(/\bthey're\b/g,'they are').replace(/\bisn't\b/g,'is not').replace(/\baren't\b/g,'are not').replace(/\bwhat's\b/g,'what is');
+ let a=s.replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(Boolean).map(w=>NUMN[w]||w);
+ const out=[];for(let i=0;i<a.length;i++){if(/^[2-5]0$/.test(a[i])&&/^[1-9]$/.test(a[i+1]||'')){out.push(String(+a[i]+ +a[i+1]));i++;}else out.push(a[i]);}return out;}
+function lev(a,b){const m=a.length,n=b.length;const d=Array.from({length:m+1},(_,i)=>[i,...Array(n).fill(0)]);for(let j=1;j<=n;j++)d[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[m][n];}
+function near(t,h){if(t===h)return true;if(t+'s'===h||h+'s'===t)return true;if(t.length>=4&&lev(t,h)<=1)return true;if(t.length>=7&&lev(t,h)<=2)return true;return false;}
+function grade(target,alts){const tw=normT(target);let best=0,heard=alts[0]||'';const tj=tw.join('');
+ alts.forEach(a=>{const aw=normT(a);if(aw.join('')===tj){best=1;heard=a;return;}let hit=0;const used=new Set();tw.forEach(t=>{const k=aw.findIndex((h,i)=>!used.has(i)&&near(t,h));if(k>=0){hit++;used.add(k);}});const r=hit/tw.length;if(r>best){best=r;heard=a;}});
+ return {r:best,heard};}
+function startSpeak(ki){hush();K2={ki,list:shuffle(KD[ki].speak).slice(0,8),i:0,scores:[],state:null};renderSpeak();}
+function spItem(){const t=K2.list[K2.i];const w=findPic(t);return {t,pic:w?w[2]:'💬',zh:w?w[1]:''};}
+function renderSpeak(){VIEW='speak';const K=KD[K2.ki];
+ if(K2.i>=K2.list.length){const tot=K2.scores.reduce((a,b)=>a+b,0);const g=Math.round(tot/2);S.gems+=g;S.xp+=tot*2;save();sfx('win');confetti(30);
+  $('#app').innerHTML=topbar()+`<div class="glass center"><div style="font-size:80px">🎤✨</div><h2 style="color:#d63f96">咒語練習完成！</h2><p style="font-size:22px;font-weight:900">得到 ⭐ ${tot} 顆星　💎 +${g}</p><div class="row"><button class="btn gold" onclick="startSpeak(${K2.ki})">🔁 再練一次</button><button class="btn ghost" onclick="openK(${K2.ki})">⬅ 回王國</button></div></div>`+nav('map');sayZhEn('咒語練習完成！','Wonderful!');setTimeout(checkPromo,1200);return;}
+ const it=spItem();const st=K2.state;
+ $('#app').innerHTML=topbar()+`<div class="glass spk" style="margin-top:12px"><div class="row" style="justify-content:space-between"><span class="chip">${K.icon} 念咒語 ${K2.i+1}/${K2.list.length}</span><button class="replay" onclick="spSay()">🔊 聽老師念</button></div>
+ <div class="opic">${pic(it.pic)}</div><div class="t">${it.t}</div><div class="tip" style="font-size:16px">${it.zh}</div>
+ <div style="margin:16px 0"><button class="mic ${st==='rec'?'on':''}" id="mic" onclick="spListen()">🎤</button><div class="tip" style="margin-top:8px" id="sphint">${st==='rec'?'正在聽…請大聲念出來！':'先按 🔊 聽一次，再按 🎤 跟著念'}</div></div>
+ <div id="spres"></div>
+ <div class="row"><button class="btn ghost sm" onclick="spNext(0)">⏭ 跳過</button>${SR?'':`<button class="btn gold sm" onclick="spSelf()">✅ 我念好了</button>`}</div></div>
+ <div class="center"><button class="btn ghost sm" onclick="stopRec();openK(${K2.ki})">⬅ 回王國</button></div>`+nav('map');
+ if(!SR)$('#sphint').innerHTML='這個瀏覽器不能自動評分（請用 Chrome 或 Edge）。<br>先聽老師念，再大聲跟著念，然後按「我念好了」！';}
+function spSay(){say(spItem().t);}
+function stopRec(){if(REC){try{REC.abort();}catch(e){}REC=null;}}
+function spListen(){if(!SR){spSay();return;}if(REC)return;hush();const r=new SR();r.lang='en-US';r.interimResults=false;r.maxAlternatives=5;REC=r;let done=false;K2.state='rec';
+ $('#mic').classList.add('on');$('#sphint').textContent='正在聽…請大聲念出來！';
+ r.onresult=e=>{done=true;const alts=[...e.results[0]].map(a=>a.transcript);REC=null;K2.state=null;showGrade(alts);};
+ r.onerror=e=>{done=true;REC=null;K2.state=null;if(e.error==='not-allowed'||e.error==='service-not-allowed')spFail('麥克風還沒被允許喔！請按網址列左邊的圖示，把「麥克風」改成「允許」。');else if(e.error==='no-speech')spFail('沒有聽到聲音，靠近一點、大聲一點再試一次！');else if(e.error!=='aborted')spFail('麥克風出了點問題，再按一次 🎤 試試看。');};
+ r.onend=()=>{if(!done){REC=null;K2.state=null;spFail('沒有聽到聲音，再試一次！');}};
+ try{r.start();}catch(e){REC=null;K2.state=null;spFail('麥克風無法啟動，再按一次試試看。');}}
+function spFail(msg){const m=$('#mic');if(m)m.classList.remove('on');const h=$('#sphint');if(h)h.textContent=msg;sfx('bad');}
+function showGrade(alts){const it=spItem();const g=grade(it.t,alts);const sc=g.r>=.85?3:g.r>=.5?2:g.r>0?1:0;$('#mic').classList.remove('on');
+ const msg=['再試一次看看！','有一點點像，再試一次！','很不錯喔！','念得太完美了！'][sc];
+ $('#sphint').textContent='';$('#spres').innerHTML=`<div class="stars3">${[0,1,2].map(i=>`<span style="animation-delay:${i*.2}s">${i<sc?'⭐':'☆'}</span>`).join('')}</div><div style="font-weight:900;font-size:20px">${msg}</div><div class="tip">魔法耳朵聽到：「${g.heard||'（沒聽清楚）'}」</div>
+ <div class="row" style="margin-top:10px"><button class="btn ghost sm" onclick="spRetry()">🔁 再念一次</button>${sc>0?`<button class="btn gold sm" onclick="spNext(${sc})">➡ 下一個</button>`:''}</div>`;
+ if(sc>=2){sfx('magic');}else sfx('pop');hush();if(S.set.zh)utter(msg,'zh');
+ const best=S.speakBest[it.t]||0;if(sc>best){S.speakBest[it.t]=sc;save();}}
+function spRetry(){$('#spres').innerHTML='';spSay();}
+function spSelf(){sfx('magic');spNext(3);}
+function spNext(sc){stopRec();K2.scores.push(sc);K2.i++;K2.state=null;renderSpeak();if(K2.i<K2.list.length)setTimeout(spSay,350);}
+
+/* ===================== 衣帽間 ===================== */
+function renderShop(){VIEW='shop';
+ $('#app').innerHTML=topbar()+`<div class="title" style="font-size:34px">👗 公主衣帽間</div><div class="glass center">${heroHTML(130)}<p class="tip">寵物每次只能帶一隻；配件可以全部戴上！公主等級越高，皇冠和翅膀就會自動出現喔！</p></div>
+ <div class="glass"><h3>🐾 魔法寵物</h3><div class="shop">${SHOP.map((it,i)=>it.pet?itemHTML(it,i):'').join('')}</div></div>
+ <div class="glass"><h3>💎 可愛配件</h3><div class="shop">${SHOP.map((it,i)=>it.pet?'':itemHTML(it,i)).join('')}</div></div>
+ <div class="glass"><h3>👑 換一位公主</h3><div class="pcards">${PR.map((p,i)=>`<button class="pcard ${S.pi===i?'on':''}" onclick="changeP(${i})">${princessSVG(i,rankIdx(),80)}<div>${p.icon} ${p.name}</div></button>`).join('')}</div></div>`+nav('shop');}
+function itemHTML(it,i){const own=S.owned.includes(i);const on=it.pet?S.pet===i:S.wear.includes(i);
+ return `<div class="item"><b>${it.e}</b><div class="n">${it.n}</div><div class="d">${it.d}</div>${own?`<button class="btn ${on?'ghost':'mint'} sm" onclick="wearIt(${i})">${on?(it.pet?'休息':'脫下'):(it.pet?'帶著':'戴上')}</button>`:`<button class="btn gold sm" onclick="buy(${i})">💎 ${it.p}</button>`}</div>`;}
+function buy(i){const it=SHOP[i];if(S.gems<it.p){toast(`還差 💎 ${it.p-S.gems}，去打怪賺寶石吧！`);sayZh('寶石不夠喔，去打怪賺寶石吧！');sfx('bad');return;}S.gems-=it.p;S.owned.push(i);if(it.pet)S.pet=i;else S.wear.push(i);save();sfx('win');confetti(20);renderShop();sayZh(`買到${it.n}了！`);}
+function wearIt(i){const it=SHOP[i];if(it.pet)S.pet=S.pet===i?null:i;else S.wear=S.wear.includes(i)?S.wear.filter(x=>x!==i):[...S.wear,i];save();sfx('pop');renderShop();}
+function changeP(i){S.pi=i;save();sfx('pop');sayZhEn(PR[i].name,PR[i].cheer);renderShop();}
+
+/* ===================== 貼紙簿 ===================== */
+function renderDex(){VIEW='dex';let h='';const total=KD.length*3;
+ KD.forEach((K,ki)=>{const ms=[...K.mons.map((m,i)=>[m,ki+'-'+i]),[K.boss,ki+'-b']];h+=`<div class="glass"><h3>${K.icon} ${K.name}</h3><div class="sgrid">${ms.map(([m,id])=>{const got=S.stickers.includes(id);return `<div class="sticker ${got?'':'no'}"><b>${m[0]}</b><div style="font-weight:700;font-size:14px">${got?m[1]:'？？？'}</div></div>`;}).join('')}</div></div>`;});
+ $('#app').innerHTML=topbar()+`<div class="title" style="font-size:34px">📖 怪獸貼紙簿</div><div class="center"><span class="chip">收集了 ${S.stickers.filter(x=>x!=='mirror').length} / ${total} 張</span></div>${h}`+nav('dex');}
+
+/* ===================== 家長專區 ===================== */
+function renderParent(){VIEW='parent';const L=wrongList();const r=S.set.rate;
+ $('#app').innerHTML=topbar()+`<div class="title" style="font-size:34px">⚙️ 家長專區</div>
+ <div class="glass"><h3>🔊 英文語音速度</h3><div class="seg row" style="justify-content:flex-start">${[[.65,'慢慢'],[.8,'剛好'],[.95,'一般']].map(([v,t])=>`<button class="${Math.abs(r-v)<.01?'on':''}" onclick="setRate(${v})">${t}</button>`).join('')}<button onclick="say('This is a pencil.')">▶ 試聽</button></div>
+ <h3 style="margin-top:14px">🗣️ 中文語音提示（題目說明會唸出來）</h3><div class="seg row" style="justify-content:flex-start"><button class="${S.set.zh?'on':''}" onclick="setZh(true)">開</button><button class="${S.set.zh?'':'on'}" onclick="setZh(false)">關</button></div>
+ <h3 style="margin-top:14px">🔓 全部王國直接開放</h3><div class="seg row" style="justify-content:flex-start"><button class="${S.set.all?'on':''}" onclick="setAll(true)">開放</button><button class="${S.set.all?'':'on'}" onclick="setAll(false)">依序解鎖</button></div></div>
+ <div class="glass"><h3>📚 課程對照（何嘉仁聯絡簿 8/31～10/16）</h3><table class="list">${KD.map((k,i)=>`<tr><td>${k.icon} ${k.name}</td><td>${k.src}</td><td>${'⭐'.repeat(S.stars[i]||0)||'—'}</td></tr>`).join('')}</table></div>
+ <div class="glass"><h3>❌ 常錯單字（${L.length}）</h3>${L.length?`<table class="list">${L.slice(0,30).map(([en,o])=>`<tr><td><b>${en}</b></td><td>${o.zh}</td><td>${KD[o.ki].name}</td><td>錯 ${o.n} 次</td></tr>`).join('')}</table>`:'<p>目前沒有錯題 🎉</p>'}</div>
+ <div class="glass"><h3>📊 進度</h3><p>等級 Lv.${level()}（${RANKS[rankIdx()][1]}）・經驗 ${S.xp}・寶石 ${S.gems}・星星 ${totalStars()}/27・貼紙 ${S.stickers.filter(x=>x!=='mirror').length}/27</p><p class="tip">進度存在這台電腦的瀏覽器裡；換電腦或清除瀏覽資料會重來。</p>
+ <div class="row" style="justify-content:flex-start"><button class="btn ghost sm" onclick="renderStart()">✏️ 改名字／換公主</button><button class="btn ghost sm" onclick="resetAll()">🗑️ 清除全部進度</button></div></div>`+nav('parent');}
+function setRate(v){S.set.rate=v;save();renderParent();say('This is a pencil.');}
+function setZh(v){S.set.zh=v;save();renderParent();}
+function setAll(v){S.set.all=v;save();renderParent();}
+function resetAll(){if(confirm('確定要清除所有星星、寶石、寵物、貼紙和錯題紀錄嗎？這個動作不能復原。')){const n=S.name,p=S.pi,st=S.set;S=defaultSave();S.name=n;S.pi=p;S.set=st;S.story=true;save();renderMap();toast('已清除進度');}}
+
+/* ===================== 啟動 ===================== */
+if(S.pi==null)renderStart();else renderMap();
+</script>
+</body>
+</html>
