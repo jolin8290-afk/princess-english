@@ -295,7 +295,10 @@ bottle:'<svg viewBox="0 0 100 100"><rect x="38" y="6" width="24" height="12" rx=
 pbox:'<svg viewBox="0 0 100 100"><rect x="24" y="22" width="9" height="30" fill="#ffd60a"/><path d="M24 22 l4.5 -10 l4.5 10z" fill="#f4c27a"/><rect x="42" y="16" width="9" height="36" fill="#ff5c8a"/><path d="M42 16 l4.5 -10 l4.5 10z" fill="#f4c27a"/><rect x="60" y="24" width="9" height="28" fill="#3ccf4e"/><path d="M60 24 l4.5 -10 l4.5 10z" fill="#f4c27a"/><rect x="10" y="44" width="80" height="38" rx="9" fill="#9b5de5"/><rect x="10" y="44" width="80" height="11" rx="5" fill="#b98af5"/><circle cx="50" cy="66" r="6" fill="#ffd166" stroke="#fff" stroke-width="2"/><path d="M20 74 l4 -4 l4 4 l-4 4z" fill="#fff" opacity=".7"/></svg>',
 pond:'<svg viewBox="0 0 100 100"><ellipse cx="50" cy="60" rx="45" ry="26" fill="#6fd06a"/><ellipse cx="50" cy="60" rx="39" ry="21" fill="#4fb3ff"/><path d="M24 54 q8 -4 16 0" stroke="#fff" stroke-width="2.5" fill="none" opacity=".8"/><path d="M58 70 q6 -3 12 0" stroke="#fff" stroke-width="2.5" fill="none" opacity=".8"/><ellipse cx="34" cy="64" rx="9" ry="5" fill="#3ccf4e"/><ellipse cx="64" cy="56" rx="8" ry="4.5" fill="#3ccf4e"/><circle cx="66" cy="53" r="3.5" fill="#ff8cc6"/></svg>',
 longp:'<svg viewBox="0 0 100 100"><rect x="2" y="42" width="78" height="16" fill="#ffd60a"/><rect x="2" y="42" width="78" height="5" fill="#fff" opacity=".35"/><rect x="2" y="42" width="10" height="16" fill="#ff8cc6"/><path d="M80 42 l17 8 l-17 8z" fill="#f4c27a"/><path d="M91.5 47.3 l5.5 2.7 l-5.5 2.7z" fill="#444"/></svg>',
-shortp:'<svg viewBox="0 0 100 100"><rect x="34" y="42" width="24" height="16" fill="#ffd60a"/><rect x="34" y="42" width="24" height="5" fill="#fff" opacity=".35"/><rect x="34" y="42" width="8" height="16" fill="#ff8cc6"/><path d="M58 42 l17 8 l-17 8z" fill="#f4c27a"/><path d="M69.5 47.3 l5.5 2.7 l-5.5 2.7z" fill="#444"/></svg>'
+shortp:'<svg viewBox="0 0 100 100"><rect x="34" y="42" width="24" height="16" fill="#ffd60a"/><rect x="34" y="42" width="24" height="5" fill="#fff" opacity=".35"/><rect x="34" y="42" width="8" height="16" fill="#ff8cc6"/><path d="M58 42 l17 8 l-17 8z" fill="#f4c27a"/><path d="M69.5 47.3 l5.5 2.7 l-5.5 2.7z" fill="#444"/></svg>',
+guava:'<svg viewBox="0 0 100 100"><path d="M38 24 q-2 -12 10 -16 q-2 10 -10 16z" fill="#3ccf4e"/><circle cx="38" cy="54" r="30" fill="#8fd16a"/><ellipse cx="28" cy="42" rx="9" ry="6" fill="#fff" opacity=".45" transform="rotate(-30 28 42)"/><ellipse cx="68" cy="66" rx="26" ry="24" fill="#a9de7c"/><ellipse cx="68" cy="66" rx="21" ry="19" fill="#ff9fb3"/><g fill="#fff3d6"><circle cx="62" cy="60" r="2"/><circle cx="72" cy="58" r="2"/><circle cx="66" cy="70" r="2"/><circle cx="76" cy="68" r="2"/><circle cx="70" cy="76" r="2"/></g></svg>',
+sock:'<svg viewBox="0 0 100 100"><path d="M36 8 h28 v50 q0 6 5 10 l14 11 q8 8 0 14 q-6 4 -14 -2 l-28 -21 q-5 -4 -5 -11z" fill="#ff8cc6"/><rect x="36" y="8" width="28" height="12" rx="3" fill="#fff"/><rect x="36" y="28" width="28" height="6" fill="#ffd166"/><rect x="36" y="40" width="28" height="6" fill="#ffd166"/><path d="M76 84 q7 -2 8 -6" stroke="#fff" stroke-width="3" fill="none" opacity=".7"/></svg>',
+skirt:'<svg viewBox="0 0 100 100"><rect x="32" y="16" width="36" height="10" rx="4" fill="#d6338a"/><path d="M33 26 h34 l22 56 q-39 12 -78 0z" fill="#ff7cc3"/><path d="M44 28 l-10 54 M56 28 l4 56 M50 28 v56 M62 28 l14 54 M38 28 l-18 52" stroke="#fff" stroke-width="2" opacity=".55"/><circle cx="50" cy="21" r="3" fill="#ffd166"/></svg>'
 };
 function blob(c){const stroke=c==='#fff'?'#d9d0e6':'rgba(0,0,0,.08)';return `<svg viewBox="0 0 100 100"><path d="M50 8 C72 6 92 22 90 46 C94 70 76 92 52 90 C28 94 8 76 10 52 C6 28 26 10 50 8Z" fill="${c}" stroke="${stroke}" stroke-width="4"/><ellipse cx="36" cy="30" rx="11" ry="6" fill="#fff" opacity=".5" transform="rotate(-25 36 30)"/></svg>`;}
 const DAYEN=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
@@ -316,7 +319,7 @@ function pic(p){
  return `<span class="pic">${E(p)}</span>`;
 }
 
-/* ===================== 課程內容（來自何嘉仁聯絡簿 8/31～10/16） ===================== */
+/* ===================== 課程內容（來自何嘉仁聯絡簿 8/31～11/9） ===================== */
 const SCHOOL=[['desk','書桌','svg:desk'],['chair','椅子','🪑'],['whiteboard','白板','svg:board'],['pencil','鉛筆','✏️'],['eraser','橡皮擦','svg:eraser'],['marker','白板筆','svg:marker'],['bookbag','書包','🎒'],['water bottle','水壺','svg:bottle'],['pencil box','鉛筆盒','svg:pbox'],['ruler','尺','📏'],['crayon','蠟筆','🖍️']];
 const COLORS=[['red','紅色','col:#ff3b4e'],['yellow','黃色','col:#ffd60a'],['pink','粉紅色','col:#ff8cc6'],['green','綠色','col:#3ccf4e'],['purple','紫色','col:#9b5de5'],['orange','橘色','col:#ff8c1a'],['blue','藍色','col:#2f80ff'],['black','黑色','col:#2a2a2a'],['white','白色','col:#fff'],['gold','金色','col:gold']];
 const COLOR_OBJ={red:['🍎','🍓','❤️'],yellow:['🍌','🌻','🐥'],pink:['🌸','🐷','🎀'],green:['🐸','🥦','🍀'],purple:['🍇','🔮','🍆'],orange:['🍊','🥕','🎃'],blue:['💧','🫐','🐳'],black:['🎱','🐈‍⬛','🕶️'],white:['🥚','☁️','🦢'],gold:['🏆','👑','🔔']};
@@ -333,7 +336,9 @@ const FEEL=[['happy','開心','😊'],['sad','難過','😢'],['mad','生氣','�
 const DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'].map((d,i)=>[d,'星期'+'一二三四五六日'[i],'day:'+i]);
 const FIXED=[['How are you?','I am fine, thank you.'],['How old are you?','I am 7 years old.'],['How is the weather today?','It is sunny.'],['How do you feel today?','I feel happy.'],['What day is today?','Today is Monday.'],['What color is it?','It is pink.']];
 const NUMS=[...Array(20)].map((_,i)=>i+1).concat([30,40,50]).map(n=>[numWord(n),'數字 '+n,'num:'+n]);
-const PHON=[['A','apple','蘋果','🍎'],['B','ball','球','⚽'],['C','cat','貓咪','🐱'],['D','dog','小狗','🐶'],['E','egg','蛋','🥚'],['F','flower','花','🌸'],['G','goat','山羊','🐐'],['H','hat','帽子','🎩'],['I','insect','昆蟲','🐞'],['J','jacket','夾克','🧥'],['K','kite','風箏','🪁'],['L','lion','獅子','🦁'],['M','monkey','猴子','🐵'],['N','nose','鼻子','👃'],['O','octopus','章魚','🐙'],['P','pig','小豬','🐷'],['Q','queen','女王','👸'],['R','rabbit','兔子','🐰'],['S','snake','蛇','🐍'],['T','turtle','烏龜','🐢'],['U','umbrella','雨傘','☂️']];
+const PHON=[['A','apple','蘋果','🍎'],['B','ball','球','⚽'],['C','cat','貓咪','🐱'],['D','dog','小狗','🐶'],['E','egg','蛋','🥚'],['F','flower','花','🌸'],['G','goat','山羊','🐐'],['H','hat','帽子','🎩'],['I','insect','昆蟲','🐞'],['J','jacket','夾克','🧥'],['K','kite','風箏','🪁'],['L','lion','獅子','🦁'],['M','monkey','猴子','🐵'],['N','nose','鼻子','👃'],['O','octopus','章魚','🐙'],['P','pig','小豬','🐷'],['Q','queen','女王','👸'],['R','rabbit','兔子','🐰'],['S','snake','蛇','🐍'],['T','turtle','烏龜','🐢'],['U','umbrella','雨傘','☂️'],['V','vase','花瓶','🏺'],['X','x-ray','X光','🩻'],['Y','yo-yo','溜溜球','🪀'],['Z','zebra','斑馬','🦓']];
+const FRUIT=[['apples','蘋果','x2:🍎','apple'],['oranges','柳橙','x2:🍊','orange'],['bananas','香蕉','x2:🍌','banana'],['grapes','葡萄','🍇','grape'],['pears','梨子','x2:🍐','pear'],['guavas','芭樂','x2:svg:guava','guava'],['watermelons','西瓜','x2:🍉','watermelon'],['pineapples','鳳梨','x2:🍍','pineapple']];
+const CLOTHES=[['a shoe','鞋子（一隻）','👟',0],['shoes','鞋子（一雙）','x2:👟',1],['a jacket','夾克','🧥',0],['a T-shirt','T恤','👕',0],['pants','長褲','👖',1],['a sock','襪子（一隻）','svg:sock',0],['socks','襪子（一雙）','x2:svg:sock',1],['a skirt','裙子','svg:skirt',0],['a shirt','襯衫','👔',0],['shorts','短褲','🩳',1]];
 const PHONW=PHON.map(p=>[p[1],p[2],p[3],p[0]]);
 
 const KD=[
@@ -361,9 +366,15 @@ const KD=[
 {name:'數字星空',en:'Number Stars',icon:'🌟',bg:'linear-gradient(160deg,#c9c0ff,#ffd2f2)',src:'9/14 數字 11-20、10/7 起 Number 1-50',
  words:NUMS,gens:['listenNum','listenNum','countQ','seqQ'],mons:[['🤖','機器人'],['👽','外星人']],boss:['🛸','飛碟艦長'],
  speak:['one','five','seven','ten','eleven','twelve','thirteen','fifteen','twenty','thirty','forty','fifty']},
-{name:'字母水晶宮',en:'ABC Palace',icon:'💎',bg:'linear-gradient(160deg,#ffcdea,#b2efff)',src:'發音 Aa-apple ～ Uu-umbrella（第一個音）',
- words:PHONW,gens:['startQ','startQ','firstQ','firstQ','listen'],mons:[['🦉','貓頭鷹'],['🧛','吸血伯爵']],boss:['🧙‍♀️','壞巫婆'],
- speak:['apple','ball','cat','dog','egg','flower','goat','hat','insect','jacket','kite','lion','monkey','nose','octopus','pig','queen','rabbit','snake','turtle','umbrella']}
+{name:'字母水晶宮',en:'ABC Palace',icon:'💎',bg:'linear-gradient(160deg,#ffcdea,#b2efff)',src:'發音 Aa-apple ～ Zz-zebra（第一個音）',
+ words:PHONW,gens:['startQ','startQ','firstQ','firstQ','listen'],mons:[['🦉','貓頭鷹'],['🧛','吸血伯爵']],boss:['🐉','黑魔龍'],
+ speak:['apple','ball','cat','dog','egg','flower','goat','hat','insect','jacket','kite','lion','monkey','nose','octopus','pig','queen','rabbit','snake','turtle','umbrella','vase','x-ray','yo-yo','zebra']},
+{name:'水果甜甜宮',en:'Fruit Palace',icon:'🍍',bg:'linear-gradient(160deg,#ffe29a,#ffb8d2)',src:'10/19～11/2 水果、What do you like? I like ___s.',
+ words:FRUIT,gens:['listen','look','likeQ','likeQ','likeListen','whatAre'],lookEn:'What are they?',mons:[['🐝','蜜蜂怪'],['🐒','搗蛋猴']],boss:['🦝','貪吃浣熊王'],
+ speak:['apples','oranges','bananas','grapes','pears','guavas','watermelons','pineapples','What do you like?','I like apples.','I like bananas.']},
+{name:'公主衣櫥城',en:'Princess Closet',icon:'👗',bg:'linear-gradient(160deg,#f5c2ff,#ffd0e6)',src:'11/4～11/9 衣服、Is this a jacket? Are they shoes?',
+ words:CLOTHES,gens:['listen','listen','isThisC','areTheyC','whatC'],mons:[['🐀','小老鼠'],['🦊','狐狸精']],boss:['🧙‍♀️','壞巫婆'],
+ speak:['a shoe','shoes','a jacket','a T-shirt','pants','socks','a skirt','a shirt','shorts','Is this a jacket?','Yes, it is a jacket.','Are they shoes?','No, they are not shoes. They are socks.']}
 ];
 const ALLW=[];KD.forEach((k,ki)=>k.words.forEach(w=>ALLW.push([w,ki])));
 function findPic(t){const w=ALLW.find(x=>x[0][0].toLowerCase()===t.toLowerCase());if(w)return w[0];return null;}
@@ -459,7 +470,7 @@ function renderStart(){VIEW='start';pickP=pickP??S.pi;
 function selP(i){const v=$('#nm').value;pickP=i;renderStart();$('#nm').value=v;sfx('pop');sayZhEn(PR[i].name,PR[i].cheer);}
 function startGame(){if(pickP==null){toast('先選一位公主喔！💖');sayZh('先選一位公主喔');return;}const v=$('#nm').value.trim();S.name=v||'棠棠';S.pi=pickP;save();sfx('win');renderMap();
  if(!S.story){S.story=true;save();setTimeout(story,300);}}
-function story(){const t=`壞巫婆把九個王國的英文魔法偷走了！${S.name}公主，用英文魔法打敗怪獸，把王國救回來吧！`;
+function story(){const t=`壞巫婆把${KD.length}個王國的英文魔法偷走了！${S.name}公主，用英文魔法打敗怪獸，把王國救回來吧！`;
  modal(`<div style="font-size:60px">🧙‍♀️💨🏰</div><h2>公主，請救救王國！</h2><p style="font-size:18px;font-weight:700;line-height:1.6">${t}</p><p class="tip">答對題目＝施放魔法 ✨　答錯也沒關係，會教你正確答案！</p><button class="btn gold" onclick="closeModal();hush()">我準備好了！</button>`);sayZh(t);}
 
 /* ===================== 地圖 ===================== */
@@ -472,7 +483,7 @@ function renderMap(){VIEW='map';
   if(i<KD.length-1)m+=`<div class="path">✦ ✧ ✦</div>`;});
  $('#app').innerHTML=topbar()+`<div class="glass banner">${heroHTML(110)}<div><div class="bubble">${rnd(lines)}</div>${chest?`<div style="margin-top:10px"><button class="btn gold sm" onclick="openChest()">🎁 每日魔法寶箱</button></div>`:''}</div></div>
  <div class="title" style="font-size:32px">🗺️ 魔法王國地圖</div><div class="map">${m}</div>
- <div class="glass center"><div style="font-size:54px">🏯</div><b>救回全部 9 個王國，打敗壞巫婆！</b></div>`+nav('map');
+ <div class="glass center"><div style="font-size:54px">🏯</div><b>救回全部 ${KD.length} 個王國，打敗壞巫婆！</b></div>`+nav('map');
  checkPromo();}
 function openChest(){if(S.lastChest===today())return;S.lastChest=today();S.gems+=15;save();sfx('win');confetti(24);modal(`<div style="font-size:80px">🎁</div><h2>每日魔法寶箱</h2><p style="font-size:22px;font-weight:900">得到 💎 15 顆寶石！</p><p class="tip">明天再來開一次吧！</p><button class="btn" onclick="closeModal();renderMap()">耶！</button>`);sayZhEn('得到十五顆寶石！','Wonderful!');}
 
@@ -537,6 +548,17 @@ GEN.startQ=K=>{const t=rnd(PHON);const os=shuffle([t,...pickN(PHON.filter(p=>p[0
 GEN.firstQ=K=>{const t=rnd(PHON);const os=shuffle([t,...pickN(PHON.filter(p=>p[0]!==t[0]),3)]);
  return {kind:'first',zh:'它是哪個字母開頭的？',say:t[1],center:pic(t[3]),layout:'pics',opts:os.map(o=>({html:`<span class="letopt">${o[0]}${o[0].toLowerCase()}</span>`,label:'',val:o[0],sayIt:o[0]})),ans:t[0],after:`${t[1]}. ${t[0]}, ${t[1]}.`,w:PHONW.find(x=>x[0]===t[1])};};
 
+GEN.likeQ=K=>{const f=rnd(FRUIT),s=x=>`I like ${x[0]}.`;const os=shuffle([f,...others(FRUIT,f,2)]);
+ return {kind:'like',zh:'你喜歡什麼？看圖回答',say:'What do you like?',en:'What do you like?',center:pic(f[2]),layout:'words',opts:os.map(o=>({html:'💖 '+s(o),val:o[0],sayIt:s(o)})),ans:f[0],after:s(f),w:f};};
+GEN.likeListen=K=>{const f=rnd(FRUIT);const os=shuffle([f,...others(FRUIT,f,3)]);
+ return {kind:'likeL',zh:'聽聽看，喜歡的是哪一個？',say:`I like ${f[0]}.`,center:SPEAKBTN,layout:'pics',opts:os.map(o=>({html:pic(o[2]),label:o[0],val:o[0],sayIt:o[0]})),ans:f[0],after:`I like ${f[0]}.`,w:f};};
+GEN.isThisC=K=>{const one=CLOTHES.filter(c=>!c[3]),t=rnd(one),yes=Math.random()<.5,a=yes?t:rnd(others(one,t,1));const q=`Is this ${a[0]}?`,Y=`Yes, it is ${a[0]}.`,N=`No, it is not ${a[0]}.`;
+ return {kind:'isThisC',zh:'這是嗎？看圖回答',say:q,en:q,center:pic(t[2]),layout:'words',opts:[{html:'⭕ '+Y,val:'y',sayIt:Y},{html:'❌ '+N,val:'n',sayIt:N}],ans:yes?'y':'n',after:yes?Y:`${N} It is ${t[0]}.`,w:t};};
+GEN.areTheyC=K=>{const many=CLOTHES.filter(c=>c[3]),t=rnd(many),yes=Math.random()<.5,a=yes?t:rnd(others(many,t,1));const q=`Are they ${a[0]}?`,Y='Yes, they are.',N='No, they are not.';
+ return {kind:'areTheyC',zh:'看圖回答：是還是不是？',say:q,en:q,center:pic(t[2]),layout:'words',opts:[{html:'⭕ '+Y,val:'y',sayIt:Y},{html:'❌ '+N,val:'n',sayIt:N}],ans:yes?'y':'n',after:yes?`Yes, they are ${t[0]}.`:`No, they are not ${a[0]}. They are ${t[0]}.`,w:t};};
+GEN.whatC=K=>{const t=rnd(CLOTHES),s=x=>x[3]?`They are ${x[0]}.`:`It is ${x[0]}.`;const os=shuffle([t,...others(CLOTHES,t,2)]);
+ return {kind:'whatC',zh:'這是什麼？選出正確的句子',say:'What is it?',en:'What is it?',center:pic(t[2]),layout:'words',opts:os.map(o=>({html:s(o),val:o[0],sayIt:s(o)})),ans:t[0],after:s(t),w:t};};
+
 /* ===================== 打怪 ===================== */
 let B=null;
 function makeMons(ki){const K=KD[ki];return [...K.mons.map((m,i)=>({e:m[0],n:m[1],hp:3,max:3,id:ki+'-'+i})),{e:K.boss[0],n:K.boss[1],hp:4,max:4,boss:1,id:ki+'-b'}];}
@@ -586,7 +608,7 @@ function endBattle(win){const b=B;B=null;hush();
  if(win){const stars=b.miss<=1?3:b.miss<=3?2:1;const first=!(S.stars[b.ki]>0);let bonus=stars*5+(first?20:0);S.gems+=bonus;S.stars[b.ki]=Math.max(S.stars[b.ki]||0,stars);save();sfx('win');confetti(50);
   const nextK=b.ki<KD.length-1?b.ki+1:null;const fin=b.ki===KD.length-1;
   modal(`<div>${heroHTML(110)}</div><h2>${fin?'👑 打敗壞巫婆了！':'🎉 王國得救了！'}</h2><div class="stars3">${[0,1,2].map(i=>`<span style="animation-delay:${.2+i*.25}s">${i<stars?'⭐':'☆'}</span>`).join('')}</div>
-  <p style="font-size:19px;font-weight:700">答錯 ${b.miss} 題　💎 +${b.gems+bonus}${first?'<br>🎁 第一次通關獎勵 +20':''}</p>${fin?'<p style="font-weight:900;color:#d63f96">九個王國都恢復英文魔法了！你是最棒的公主！</p>':''}
+  <p style="font-size:19px;font-weight:700">答錯 ${b.miss} 題　💎 +${b.gems+bonus}${first?'<br>🎁 第一次通關獎勵 +20':''}</p>${fin?'<p style="font-weight:900;color:#d63f96">全部'+KD.length+'個王國都恢復英文魔法了！你是最棒的公主！</p>':''}
   <div class="row"><button class="btn ghost sm" onclick="closeModal();startBattle(${b.ki})">🔁 再玩一次</button>${nextK!=null?`<button class="btn gold sm" onclick="closeModal();openK(${nextK})">➡ 下一個王國</button>`:''}<button class="btn sm" onclick="closeModal();go('map')">🗺️ 地圖</button></div>`);
   sayZhEn(fin?'你打敗壞巫婆了！你是最棒的公主！':'王國得救了！','You did it! Wonderful!');setTimeout(checkPromo,1500);}
  else{save();sfx('bad');modal(`<div style="font-size:70px">💫</div><h2>魔力用完了！</h2><p style="font-size:19px;font-weight:700">沒關係，剛剛答錯的題目都會教你正確答案。<br>休息一下，再挑戰一次吧！</p><p>💎 這次還是賺到 ${b.gems} 顆寶石</p><div class="row"><button class="btn gold" onclick="closeModal();startBattle(${b.ki})">💪 再挑戰</button><button class="btn ghost" onclick="closeModal();startCards(${b.ki})">🃏 先練單字卡</button></div>`);sayZh('魔力用完了，沒關係，再挑戰一次吧！');}}
@@ -692,9 +714,9 @@ function renderParent(){VIEW='parent';const L=wrongList();const r=S.set.rate;
  <div class="glass"><h3>🔊 英文語音速度</h3><div class="seg row" style="justify-content:flex-start">${[[.65,'慢慢'],[.8,'剛好'],[.95,'一般']].map(([v,t])=>`<button class="${Math.abs(r-v)<.01?'on':''}" onclick="setRate(${v})">${t}</button>`).join('')}<button onclick="say('This is a pencil.')">▶ 試聽</button></div>
  <h3 style="margin-top:14px">🗣️ 中文語音提示（題目說明會唸出來）</h3><div class="seg row" style="justify-content:flex-start"><button class="${S.set.zh?'on':''}" onclick="setZh(true)">開</button><button class="${S.set.zh?'':'on'}" onclick="setZh(false)">關</button></div>
  <h3 style="margin-top:14px">🔓 全部王國直接開放</h3><div class="seg row" style="justify-content:flex-start"><button class="${S.set.all?'on':''}" onclick="setAll(true)">開放</button><button class="${S.set.all?'':'on'}" onclick="setAll(false)">依序解鎖</button></div></div>
- <div class="glass"><h3>📚 課程對照（何嘉仁聯絡簿 8/31～10/16）</h3><table class="list">${KD.map((k,i)=>`<tr><td>${k.icon} ${k.name}</td><td>${k.src}</td><td>${'⭐'.repeat(S.stars[i]||0)||'—'}</td></tr>`).join('')}</table></div>
+ <div class="glass"><h3>📚 課程對照（何嘉仁聯絡簿 8/31～11/9）</h3><table class="list">${KD.map((k,i)=>`<tr><td>${k.icon} ${k.name}</td><td>${k.src}</td><td>${'⭐'.repeat(S.stars[i]||0)||'—'}</td></tr>`).join('')}</table></div>
  <div class="glass"><h3>❌ 常錯單字（${L.length}）</h3>${L.length?`<table class="list">${L.slice(0,30).map(([en,o])=>`<tr><td><b>${en}</b></td><td>${o.zh}</td><td>${KD[o.ki].name}</td><td>錯 ${o.n} 次</td></tr>`).join('')}</table>`:'<p>目前沒有錯題 🎉</p>'}</div>
- <div class="glass"><h3>📊 進度</h3><p>等級 Lv.${level()}（${RANKS[rankIdx()][1]}）・經驗 ${S.xp}・寶石 ${S.gems}・星星 ${totalStars()}/27・貼紙 ${S.stickers.filter(x=>x!=='mirror').length}/27</p><p class="tip">進度存在這台電腦的瀏覽器裡；換電腦或清除瀏覽資料會重來。</p>
+ <div class="glass"><h3>📊 進度</h3><p>等級 Lv.${level()}（${RANKS[rankIdx()][1]}）・經驗 ${S.xp}・寶石 ${S.gems}・星星 ${totalStars()}/${KD.length*3}・貼紙 ${S.stickers.filter(x=>x!=='mirror').length}/${KD.length*3}</p><p class="tip">進度存在這台電腦的瀏覽器裡；換電腦或清除瀏覽資料會重來。</p>
  <div class="row" style="justify-content:flex-start"><button class="btn ghost sm" onclick="renderStart()">✏️ 改名字／換公主</button><button class="btn ghost sm" onclick="resetAll()">🗑️ 清除全部進度</button></div></div>`+nav('parent');}
 function setRate(v){S.set.rate=v;save();renderParent();say('This is a pencil.');}
 function setZh(v){S.set.zh=v;save();renderParent();}
